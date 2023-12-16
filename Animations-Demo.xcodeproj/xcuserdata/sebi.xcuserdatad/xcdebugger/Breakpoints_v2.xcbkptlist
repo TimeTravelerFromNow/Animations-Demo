@@ -30,8 +30,8 @@
             filePath = "Animations-Demo/AnimationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "customAnimation()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,9 +62,180 @@
             filePath = "Animations-Demo/AnimationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "customAnimation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1F528C4-34DB-4AF9-B8F2-A2A6999F69AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Animations-Demo/PiSlice.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "PiSlice"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "B1F528C4-34DB-4AF9-B8F2-A2A6999F69AA - 36e178e2ddcb68be"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Animations_Demo.PiSlice.angle.didset : CoreGraphics.CGFloat"
+                  moduleName = "Animations-Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sebi/Dev/Animations-Demo/Animations-Demo/PiSlice.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "B1F528C4-34DB-4AF9-B8F2-A2A6999F69AA - 64b6b9a43645d875"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Animations_Demo.PiSlice.angle.getter : CoreGraphics.CGFloat"
+                  moduleName = "Animations-Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sebi/Dev/Animations-Demo/Animations-Demo/PiSlice.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "B1F528C4-34DB-4AF9-B8F2-A2A6999F69AA - 53ac6cce37fc2f90"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Animations_Demo.PiSlice.angle.setter : CoreGraphics.CGFloat"
+                  moduleName = "Animations-Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sebi/Dev/Animations-Demo/Animations-Demo/PiSlice.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "B1F528C4-34DB-4AF9-B8F2-A2A6999F69AA - aa22099006189ba3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Animations_Demo.PiSlice.angle.modify : CoreGraphics.CGFloat"
+                  moduleName = "Animations-Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sebi/Dev/Animations-Demo/Animations-Demo/PiSlice.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "B1F528C4-34DB-4AF9-B8F2-A2A6999F69AA - 66a0b572a525fadb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Animations_Demo.PiSlice.angle.modify : CoreGraphics.CGFloat with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Animations-Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sebi/Dev/Animations-Demo/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "17">
+               </Location>
+               <Location
+                  uuid = "B1F528C4-34DB-4AF9-B8F2-A2A6999F69AA - 5db811c01c0f51c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Animations_Demo.PiSlice.init() -&gt; Animations_Demo.PiSlice"
+                  moduleName = "Animations-Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sebi/Dev/Animations-Demo/Animations-Demo/PiSlice.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "189">
+               </Location>
+               <Location
+                  uuid = "B1F528C4-34DB-4AF9-B8F2-A2A6999F69AA - e409ae8f9a9e5c81"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Animations_Demo.PiSlice.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Animations_Demo.PiSlice&gt;"
+                  moduleName = "Animations-Demo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sebi/Dev/Animations-Demo/Animations-Demo/PiSlice.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "182">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EF72C2D0-1A12-4E1D-88B0-4CA9169DF441"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Animations-Demo/AnimationManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "setupNodes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91E87774-661C-4012-99F5-76079910B7AB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Animations-Demo/FrameHelpers.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-(lhs:rhs:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9822773E-FDC3-4470-8F3A-13EEDAE43E1C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Animations-Demo/AnimationScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "update(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

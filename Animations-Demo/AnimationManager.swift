@@ -83,15 +83,16 @@ class TrianglePointsA: Animation {
 
         if fIndex == 0 {
             outline.alpha = 0
-//            outline.path = nil
             
             for (i, pt) in points.enumerated() {
                 pt.position = CGPoint(x: scene.fWidth / 2, y: scene.fHeight / 2) //
                 pt.zPosition = 1
                 pLabels[i].alpha = 0
             }
-            
+          
+            arc.position = points[0].position
         }
+        
         if fIndex == 1 {
             let tFA2 = SKAction.customAction(withDuration: 1, actionBlock: {
                 node, elapsedT in
@@ -115,16 +116,25 @@ class TrianglePointsA: Animation {
             arc.run(tFA)
         }
         if fIndex == 2 {
-
+            let piRot = SKAction.customAction(withDuration: 1, actionBlock: {
+                node, elapsedT in
+                ( node as! PiSlice ).angle = elapsedT * 2 * .pi
+            }
+            )
             for (i, pL) in pLabels.enumerated() {
                 pL.position = points[i].position
                 pL.position.y += 30
                 pL.position.x += 30 * ( CGFloat(i) - 1 )
                 pL.run(tFA)
             }
-            arc.angle = 2 * .pi
-            arc.run(tFA)
-
+            arc.alpha = 0.5
+            arc.position = points[0].position
+            arc.run(piRot)
+            
+            let normV = points[2].position - points[0].position
+            let midPoint = normV / 2
+            arc.position = midPoint + points[0].position
+            arc.direction = CGVector(normV)
         }
     }
 }
@@ -148,7 +158,7 @@ class TitleTextA: Animation {
     }
     
     func setFrame(_ to: Int) {
-        frameNo.text = "Frame: \(to)"
+        frameNo.text = "Ready to play frame: \(to)"
     }
     
     override func setupNodes() {
