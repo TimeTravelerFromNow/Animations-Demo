@@ -41,100 +41,123 @@ class TrianglePointsA: Animation {
         super.init(0, 10,s: s)
     }
     var points: [CustomPoint] = []
-    var pLabels: [SKLabelNode] = []
+    var indices: [SKLabelNode] = []
+    var triMaker: TriConstructor!
     
-    var outline: SKShapeNode!
-    var arc: PiSlice!
+    var tri: CustomPolygon!
+    var currSnowflake: CustomPolygon!
+    var nextSnowflake: CustomPolygon!
     
-    var tCoords = [
-        CGPoint(x: -0.5,y: -0.5),
-        CGPoint(x: 0.5, y: -0.5),
-        CGPoint(x: 0.0,y: 0.366),
-    ]
-    func getTriPath() -> CGMutablePath {
-        let path = CGMutablePath()
-        path.move(to: points.first!.position)
-        for p in points {
-            path.addLine(to: p.position)
-        }
-        return path
-    }
-
+    let fIA = SKAction.fadeIn(withDuration: 1)
+    let fIA_half = SKAction.fadeAlpha(to: 0.5, duration: 1)
+    
+    let fO = SKAction.fadeOut(withDuration: 1)
+    
     override func setupNodes() {
-        scene.ndcToScene(&tCoords)
-        for i in 0..<3 {
-            let pt = CustomPoint(30)
-            let pL = SKLabelNode(text: "\(i)")
-            self.points.append(pt)
-            self.pLabels.append(pL)
+        for i in 0..<FractalData.thirdIteration.count {
+            var v = CustomPoint()
+            v.position = FractalData.thirdIteration[i]
+            v.alpha = 0
+            var l = SKLabelNode(text: " \(FractalData.thirdIndices[i]) ")
+            l.position = v.position
+            l.alpha = 0
+            points.append(v)
+            indices.append(l)
         }
-        outline = SKShapeNode()
         
-        arc = PiSlice()
+        tri = CustomPolygon()
+        tri.pts =  FractalData.zeroIteration
+        currSnowflake = CustomPolygon()
+        currSnowflake.alpha = 0
+        nextSnowflake = CustomPolygon()
+        nextSnowflake.alpha = 0
         
-        setAnimationNodes(points)
-        appendNodes(contentsOf: pLabels)
-        appendNode(outline)
-        appendNode(arc)
+        triMaker = TriConstructor(points[0], points[2])
+
+        self.setAnimationNodes(points)
+        self.appendNodes(contentsOf: indices)
+        self.appendNode(triMaker)
+        self.appendNode(tri)
+        self.appendNode(currSnowflake)
+        self.appendNode(nextSnowflake)
+
+    }
+    func hideAll() { 
+        for p in points{ p.alpha = 0};
+        for ind in indices { ind.alpha = 0};
+        tri.alpha = 0
+        currSnowflake.alpha = 0
+        nextSnowflake.alpha = 0
     }
     
     override func customAnimation() {
-        let tFA = SKAction.fadeIn(withDuration: 1) // 1 sec fade action
 
         if fIndex == 0 {
-            outline.alpha = 0
-            
-            for (i, pt) in points.enumerated() {
-                pt.position = CGPoint(x: scene.fWidth / 2, y: scene.fHeight / 2) //
-                pt.zPosition = 1
-                pLabels[i].alpha = 0
+            hideAll()
+            tri.run(fIA_half)
+            for i in FractalData.zeroIndices {
+                points[i].alpha = 1
+                indices[i].run(fIA)
             }
-          
-            arc.position = points[0].position
         }
         
         if fIndex == 1 {
-            let tFA2 = SKAction.customAction(withDuration: 1, actionBlock: {
-                node, elapsedT in
-                ( node as! SKShapeNode ).path = self.getTriPath()
-            }
-            )
-            outline.run(tFA)
-            outline.fillColor = .white
-
-            outline.run(tFA2)
-            
-            outline.strokeColor = .white
-            outline.lineWidth = 1
-            
-            for (i, pt) in points.enumerated() {
-                let moveAct = SKAction.move(to: tCoords[i], duration: 1)
-                pt.run(moveAct)
-            }
-            
-            arc.position = points[0].position
-            arc.run(tFA)
+            triMaker.animateBase()
         }
+        
         if fIndex == 2 {
-            let piRot = SKAction.customAction(withDuration: 1, actionBlock: {
-                node, elapsedT in
-                ( node as! PiSlice ).angle = elapsedT * 2 * .pi
+            triMaker.animateNormalLine()
+        }
+        
+        if fIndex == 3 {
+            triMaker.animateMagFinder()
+        }
+        if fIndex == 4 {
+            triMaker.animateFinalPoint()
+        }
+        
+        if fIndex == 5 {
+            triMaker.aniTri()
+        }
+        
+        if fIndex == 6 {
+            triMaker.fadeOut()
+            currSnowflake.outsideInds = FractalData.outterIs_1
+            currSnowflake.pts = FractalData.firstIteration
+            currSnowflake.run(fIA_half)
+            tri.run(fO)
+        }
+        
+        if fIndex == 7 {
+            for i in FractalData.firstIndices {
+                points[i].alpha = 1
+                indices[i].run(fIA)
             }
-            )
-            for (i, pL) in pLabels.enumerated() {
-                pL.position = points[i].position
-                pL.position.y += 30
-                pL.position.x += 30 * ( CGFloat(i) - 1 )
-                pL.run(tFA)
-            }
-            arc.alpha = 0.5
-            arc.position = points[0].position
-            arc.run(piRot)
+        }
+        if fIndex == 8  {
+            currSnowflake.alpha = 0
+            nextSnowflake.outsideInds = FractalData.outterIs_2
+            nextSnowflake.pts = FractalData.secondIteration
+            nextSnowflake.run(fIA_half)
             
-            let normV = points[2].position - points[0].position
-            let midPoint = normV / 2
-            arc.position = midPoint + points[0].position
-            arc.direction = CGVector(normV)
+            currSnowflake.outsideInds = FractalData.outterIs_3
+            currSnowflake.pts = FractalData.thirdIteration
+            for i in FractalData.secondIndices   {
+                points[i].alpha = 1
+                indices[i].run(fIA)
+            }
+        }
+        
+        if fIndex == 9 {
+            
+            nextSnowflake.run(fO)
+            currSnowflake.run(fIA_half)
+            
+            for i in FractalData.thirdIndices   {
+                indices[i].run(fO)
+                    
+                points[i].run(fIA)
+            }
         }
     }
 }

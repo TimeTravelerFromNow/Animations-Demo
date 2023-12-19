@@ -20,6 +20,12 @@ extension CGFloat: SIMDScalar {
 
 typealias cg_float2 = SIMD2<CGFloat>
 
+extension NSColor {
+    convenience init(_ from: float4) {
+        self.init(red: CGFloat(from.x), green: CGFloat(from.y), blue: CGFloat(from.z), alpha: CGFloat(from.w))
+    }
+}
+
 extension CGVector {
     init(_ from: CGPoint) {
         self.init(dx: from.x, dy: from.y)
@@ -87,12 +93,24 @@ extension CGPoint: SIMDStorage {
     public static func * (lhs: CGPoint, rhs: CGPoint) -> CGFloat {
         return lhs.x * rhs.x + lhs.y * rhs.y
     }
+    
+    public static func * (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
+        return CGPoint(lhs.x * rhs , lhs.y * rhs)
+    }
+    public static func * (lhs: CGFloat, rhs: CGPoint) -> CGPoint {
+        return CGPoint(lhs * rhs.x , lhs * rhs.y)
+    }
+
     public static func / (lhs: CGPoint, rhs: CGFloat) -> CGPoint {
         return CGPoint(x : lhs.x / rhs ,y: lhs.y / rhs)
     }
     
+    public var normalized: CGPoint {
+        return self / self.magnitude
+    }
+    
     public var magnitude: CGFloat {
-        return  self * self / sqrt( self * self )
+        return sqrt( self * self )
     }
     // didnt work with simd ?
     public static func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {

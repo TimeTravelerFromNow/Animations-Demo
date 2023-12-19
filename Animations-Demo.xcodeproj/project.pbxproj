@@ -20,6 +20,11 @@
 		92C984FE2B2C247600EE45EC /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C984FD2B2C247600EE45EC /* KeyboardManager.swift */; };
 		92C985002B2CC8E100EE45EC /* PiSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C984FF2B2CC8E100EE45EC /* PiSlice.swift */; };
 		92C985022B2D062900EE45EC /* FractalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C985012B2D062900EE45EC /* FractalData.swift */; };
+		92C985042B2E56EE00EE45EC /* CustomLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C985032B2E56EE00EE45EC /* CustomLine.swift */; };
+		92C985062B2E79B200EE45EC /* TriConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C985052B2E79B200EE45EC /* TriConstructor.swift */; };
+		92C985082B2EA34200EE45EC /* SnowflakeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C985072B2EA34200EE45EC /* SnowflakeMaker.swift */; };
+		92C9850D2B2EA4BA00EE45EC /* MetalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C9850C2B2EA4BA00EE45EC /* MetalTypes.swift */; };
+		92C9850F2B2ED27400EE45EC /* CustomPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C9850E2B2ED27400EE45EC /* CustomPolygon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,11 @@
 		92C984FD2B2C247600EE45EC /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		92C984FF2B2CC8E100EE45EC /* PiSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiSlice.swift; sourceTree = "<group>"; };
 		92C985012B2D062900EE45EC /* FractalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalData.swift; sourceTree = "<group>"; };
+		92C985032B2E56EE00EE45EC /* CustomLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLine.swift; sourceTree = "<group>"; };
+		92C985052B2E79B200EE45EC /* TriConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriConstructor.swift; sourceTree = "<group>"; };
+		92C985072B2EA34200EE45EC /* SnowflakeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowflakeMaker.swift; sourceTree = "<group>"; };
+		92C9850C2B2EA4BA00EE45EC /* MetalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalTypes.swift; sourceTree = "<group>"; };
+		92C9850E2B2ED27400EE45EC /* CustomPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPolygon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,22 +80,51 @@
 		92C984DD2B2BC54000EE45EC /* Animations-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				92C9850B2B2EA37A00EE45EC /* ManagersHelpers */,
+				92C9850A2B2EA35700EE45EC /* SnowflakeFractal */,
+				92C985092B2EA34700EE45EC /* CustomNodes */,
 				92C984DE2B2BC54000EE45EC /* AppDelegate.swift */,
 				92C984E02B2BC54000EE45EC /* AnimationScene.sks */,
 				92C984E22B2BC54000EE45EC /* Actions.sks */,
-				92C984F92B2BD4B200EE45EC /* CustomPoint.swift */,
-				92C984FF2B2CC8E100EE45EC /* PiSlice.swift */,
-				92C984FB2B2C082800EE45EC /* AnimationManager.swift */,
-				92C984F32B2BCB6F00EE45EC /* FrameHelpers.swift */,
 				92C984E62B2BC54000EE45EC /* ViewController.swift */,
 				92C984E42B2BC54000EE45EC /* AnimationScene.swift */,
-				92C985012B2D062900EE45EC /* FractalData.swift */,
 				92C984E82B2BC54300EE45EC /* Assets.xcassets */,
 				92C984EA2B2BC54300EE45EC /* Main.storyboard */,
 				92C984ED2B2BC54300EE45EC /* Animations_Demo.entitlements */,
-				92C984FD2B2C247600EE45EC /* KeyboardManager.swift */,
 			);
 			path = "Animations-Demo";
+			sourceTree = "<group>";
+		};
+		92C985092B2EA34700EE45EC /* CustomNodes */ = {
+			isa = PBXGroup;
+			children = (
+				92C984F92B2BD4B200EE45EC /* CustomPoint.swift */,
+				92C985032B2E56EE00EE45EC /* CustomLine.swift */,
+				92C984FF2B2CC8E100EE45EC /* PiSlice.swift */,
+				92C985052B2E79B200EE45EC /* TriConstructor.swift */,
+				92C9850E2B2ED27400EE45EC /* CustomPolygon.swift */,
+			);
+			path = CustomNodes;
+			sourceTree = "<group>";
+		};
+		92C9850A2B2EA35700EE45EC /* SnowflakeFractal */ = {
+			isa = PBXGroup;
+			children = (
+				92C985012B2D062900EE45EC /* FractalData.swift */,
+				92C985072B2EA34200EE45EC /* SnowflakeMaker.swift */,
+				92C9850C2B2EA4BA00EE45EC /* MetalTypes.swift */,
+			);
+			path = SnowflakeFractal;
+			sourceTree = "<group>";
+		};
+		92C9850B2B2EA37A00EE45EC /* ManagersHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				92C984FD2B2C247600EE45EC /* KeyboardManager.swift */,
+				92C984FB2B2C082800EE45EC /* AnimationManager.swift */,
+				92C984F32B2BCB6F00EE45EC /* FrameHelpers.swift */,
+			);
+			path = ManagersHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,10 +202,15 @@
 				92C984E72B2BC54000EE45EC /* ViewController.swift in Sources */,
 				92C985002B2CC8E100EE45EC /* PiSlice.swift in Sources */,
 				92C984E52B2BC54000EE45EC /* AnimationScene.swift in Sources */,
+				92C9850F2B2ED27400EE45EC /* CustomPolygon.swift in Sources */,
+				92C9850D2B2EA4BA00EE45EC /* MetalTypes.swift in Sources */,
 				92C984FC2B2C082800EE45EC /* AnimationManager.swift in Sources */,
+				92C985042B2E56EE00EE45EC /* CustomLine.swift in Sources */,
 				92C984FA2B2BD4B200EE45EC /* CustomPoint.swift in Sources */,
+				92C985082B2EA34200EE45EC /* SnowflakeMaker.swift in Sources */,
 				92C984DF2B2BC54000EE45EC /* AppDelegate.swift in Sources */,
 				92C984FE2B2C247600EE45EC /* KeyboardManager.swift in Sources */,
+				92C985062B2E79B200EE45EC /* TriConstructor.swift in Sources */,
 				92C985022B2D062900EE45EC /* FractalData.swift in Sources */,
 				92C984F42B2BCB6F00EE45EC /* FrameHelpers.swift in Sources */,
 			);
