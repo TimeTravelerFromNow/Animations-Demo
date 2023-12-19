@@ -110,17 +110,26 @@ class TrianglePointsA: Animation {
         }
         
         if fIndex == 3 {
+            triMaker.zoomOn(mC: self.scene.moveCam, zC: self.scene.zoomCam)
+        }
+        
+        if fIndex == 4 {
             triMaker.animateMagFinder()
         }
-        if fIndex == 4 {
+        if fIndex == 5 {
             triMaker.animateFinalPoint()
         }
         
-        if fIndex == 5 {
+        if fIndex == 6 {
             triMaker.aniTri()
         }
         
-        if fIndex == 6 {
+        if fIndex == 7 {
+            self.scene.returnCam(d: 1)
+            self.scene.unZoomCam(d: 1)
+        }
+        
+        if fIndex == 8 {
             triMaker.fadeOut()
             currSnowflake.outsideInds = FractalData.outterIs_1
             currSnowflake.pts = FractalData.firstIteration
@@ -128,13 +137,13 @@ class TrianglePointsA: Animation {
             tri.run(fO)
         }
         
-        if fIndex == 7 {
+        if fIndex == 9 {
             for i in FractalData.firstIndices {
                 points[i].alpha = 1
                 indices[i].run(fIA)
             }
         }
-        if fIndex == 8  {
+        if fIndex == 10  {
             currSnowflake.alpha = 0
             nextSnowflake.outsideInds = FractalData.outterIs_2
             nextSnowflake.pts = FractalData.secondIteration
@@ -148,7 +157,7 @@ class TrianglePointsA: Animation {
             }
         }
         
-        if fIndex == 9 {
+        if fIndex == 11 {
             
             nextSnowflake.run(fO)
             currSnowflake.run(fIA_half)
@@ -169,8 +178,8 @@ class TitleTextA: Animation {
     
     func makeTexts(_ fW: CGFloat, _ fH: CGFloat) {
         titleText = SKLabelNode(text: "Triangle Vertices")
-        titleText.position.x = fW * 0.25
-        titleText.position.y = fH * 0.75
+        titleText.position.x = fW * 0.5
+        titleText.position.y = fH * 0.8
         frameNo = SKLabelNode(text: "Frame: 0")
         frameNo.position = titleText.position
         frameNo.position.x += fW * 0.5
@@ -187,11 +196,55 @@ class TitleTextA: Animation {
     override func setupNodes() {
         makeTexts( scene.fWidth, scene.fHeight )
         appendNode(titleText)
-        appendNode(frameNo)
+//        appendNode(frameNo)
+        titleText.text = "Equilateral Triangle"
+
     }
     override func customAnimation() {
-        if fIndex == 1 {
+        if fIndex == 0 {
             titleText.text = "Equilateral Triangle"
+        }
+        if fIndex == 1 {
+            titleText.text = "Vectorize Side"
+        }
+        if fIndex == 2 {
+            titleText.text = "Rotate 90°"
+        }
+        
+        
+        if fIndex == 4 {
+            titleText.text = "Use tangent to find height"
+        }
+        
+        
+        if fIndex == 5 {
+            titleText.text = "Unit vector multiplied by height"
+        }
+        
+        
+        if fIndex == 6 {
+            titleText.text = "new triangle created"
+        }
+        
+        
+        if fIndex == 8 {
+            titleText.text = "first iteration"
+        }
+        
+        if fIndex == 9 {
+            titleText.text = "new points"
+
+        }
+        
+        if fIndex == 10 {
+            titleText.text = "second iteration"
+
+        }
+        if fIndex == 11 {
+            titleText.text = "third iteration"
+        }
+        
+        if fIndex == 12 {
         }
     }
 }

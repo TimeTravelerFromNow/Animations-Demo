@@ -11,8 +11,30 @@ class AnimationScene: SKScene {
     
     var fWidth : CGFloat  { return self.frame.width  }
     var fHeight : CGFloat { return self.frame.height  }
+    var fCenter: CGPoint { return CGPoint(fWidth * 0.5, fHeight * 0.5) }
     private var _startT: TimeInterval = 0
     private var _timeEl: TimeInterval = 0
+    
+    func moveCam(to: CGPoint, d: TimeInterval) {
+        let mA = SKAction.move(to: to, duration: d)
+        self.camera?.run(mA)
+    }
+    
+    func returnCam(d: TimeInterval) {
+        let mA = SKAction.move(to: fCenter, duration: d )
+        self.camera?.run(mA)
+    }
+    
+    func zoomCam(s: CGFloat, d: TimeInterval){
+        let zA = SKAction.scale(to: s, duration: d)
+        self.camera?.run(zA)
+    }
+    
+    func unZoomCam(d: TimeInterval) {
+        let zA = SKAction.scale(to: 1, duration: d)
+        self.camera?.run(zA)
+    }
+    
     
     override func didMove(to view: SKView) {
         _startT = CACurrentMediaTime()

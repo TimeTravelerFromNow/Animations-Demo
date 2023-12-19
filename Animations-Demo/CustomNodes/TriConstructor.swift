@@ -85,6 +85,11 @@ class TriConstructor: SKShapeNode {
         normalLine.run(waitandGo)
     }
     
+    func zoomOn( mC: (CGPoint, TimeInterval) -> Void, zC: (CGFloat, TimeInterval) -> Void ) {
+        mC(midpoint.position, 1)
+        zC(0.6, 1)
+    }
+    
     func animateMagFinder() {
         wedge.position = v0.position
         wedge.direction = CGVector(srcV1.position - srcV0.position)
@@ -149,6 +154,11 @@ class TriConstructor: SKShapeNode {
         finalTri.alpha = 0
         
         midpoint.alpha = 0
+        
+        bL.alpha = 0
+        hL.alpha = 0
+        tanLabel.alpha = 0
+        
         midpoint.color = ptsColSecond
         
         v0.color = ptsCol
