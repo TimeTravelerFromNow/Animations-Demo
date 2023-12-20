@@ -15,13 +15,17 @@ class AnimationScene: SKScene {
     private var _startT: TimeInterval = 0
     private var _timeEl: TimeInterval = 0
     
+    let triOffset: CGFloat = 90
+    
     func moveCam(to: CGPoint, d: TimeInterval) {
         let mA = SKAction.move(to: to, duration: d)
         self.camera?.run(mA)
     }
     
     func returnCam(d: TimeInterval) {
-        let mA = SKAction.move(to: fCenter, duration: d )
+        var triCenter = fCenter
+        triCenter.y -= triOffset
+        let mA = SKAction.move(to: triCenter, duration: d )
         self.camera?.run(mA)
     }
     
@@ -43,7 +47,7 @@ class AnimationScene: SKScene {
         
         var cam = SKCameraNode()
         addChild(cam)
-        cam.position = CGPoint(x: fWidth / 2,y: fHeight / 2)
+        cam.position = CGPoint(x: fWidth / 2,y: fHeight / 2 - triOffset)
         
         self.camera = cam
         AnimationManager.Initialize(self)
@@ -84,30 +88,6 @@ class AnimationScene: SKScene {
         _timeEl = currentTime - _startT
         let tStep: CGFloat = 0.0166
         
-        if Int(_timeEl) % 2 == 0 && frameNumber < 10 { // every 2 seconds next frame
-            if _animationDelay > 0.0 {
-                _animationDelay -= tStep
-            } else {
-                AnimationManager.NextFrame()
-                frameNumber += 1
-                _animationDelay = 1
-                if frameNumber == 10 { _animationDelay = 4 }
-            }
-        } else if frameNumber == 10 {
-            // show off the last triangle a few seconds more..
-            if _animationDelay > 0.0 {
-                _animationDelay -= tStep
-            } else {
-                _animationDelay = 1
-                frameNumber += 1
-            }
-        }
-        
-        if frameNumber > 10 {
-            frameNumber = 0
-            _animationDelay = 0
-            AnimationManager.StopAll()
-        }
         
         guard let cam = self.camera else { print("no camera in scene"); return }
         if( KeyboardManager.KeyPressed(Keycode.w)) {
