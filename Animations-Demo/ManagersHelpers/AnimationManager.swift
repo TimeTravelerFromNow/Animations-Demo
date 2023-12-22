@@ -38,7 +38,7 @@ class AnimationManager {
 
 class TrianglePointsA: Animation {
     init(s: AnimationScene) {
-        super.init(0, 10,s: s)
+        super.init(0, 12,s: s)
     }
     var points: [CustomPoint] = []
     var indices: [SKLabelNode] = []
@@ -179,14 +179,14 @@ class TitleTextA: Animation {
     func makeTexts(_ fW: CGFloat, _ fH: CGFloat) {
         titleText = SKLabelNode(text: "Triangle Vertices")
         titleText.position.x = fW * 0.5
-        titleText.position.y = fH * 0.8
+        titleText.position.y = fH * 0.2
         frameNo = SKLabelNode(text: "Frame: 0")
         frameNo.position = titleText.position
         frameNo.position.x += fW * 0.5
     }
     
     init( s: AnimationScene) {
-        super.init(0, 10, s: s)
+        super.init(0, 12, s: s)
     }
     
     func setFrame(_ to: Int) {
@@ -203,6 +203,8 @@ class TitleTextA: Animation {
     override func customAnimation() {
         if fIndex == 0 {
             titleText.text = "Equilateral Triangle"
+            titleText.position.x = self.scene.fWidth * 0.5
+            titleText.position.y = self.scene.fHeight * 0.2
         }
         if fIndex == 1 {
             titleText.text = "Vectorize Side"
@@ -229,6 +231,8 @@ class TitleTextA: Animation {
         
         if fIndex == 8 {
             titleText.text = "first iteration"
+            titleText.position.x = self.scene.fWidth * 0.5
+            titleText.position.y = self.scene.fHeight * 0.75
         }
         
         if fIndex == 9 {
@@ -242,9 +246,6 @@ class TitleTextA: Animation {
         }
         if fIndex == 11 {
             titleText.text = "third iteration"
-        }
-        
-        if fIndex == 12 {
         }
     }
 }

@@ -15,7 +15,7 @@ class AnimationScene: SKScene {
     private var _startT: TimeInterval = 0
     private var _timeEl: TimeInterval = 0
     
-    let triOffset: CGFloat = 90
+    let triOffset: CGFloat = 60
     
     func moveCam(to: CGPoint, d: TimeInterval) {
         let mA = SKAction.move(to: to, duration: d)
