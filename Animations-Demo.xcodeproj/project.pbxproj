@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		697BF68F2D5A733500584D4F /* middle-earth-3rd-age_base.png in Resources */ = {isa = PBXBuildFile; fileRef = 697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */; };
+		697BF6912D5A984000584D4F /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BF6902D5A983D00584D4F /* Animation.swift */; };
+		697BF6932D5A986300584D4F /* DeployJourneyAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BF6922D5A985E00584D4F /* DeployJourneyAnimation.swift */; };
+		697BF6952D5ABCF800584D4F /* middle-earth-3rd-age.png in Resources */ = {isa = PBXBuildFile; fileRef = 697BF6942D5ABCF800584D4F /* middle-earth-3rd-age.png */; };
+		9229DE3E2B730E6900BB60D6 /* FolderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9229DE3D2B730E6900BB60D6 /* FolderIcon.swift */; };
 		92C984DF2B2BC54000EE45EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C984DE2B2BC54000EE45EC /* AppDelegate.swift */; };
 		92C984E12B2BC54000EE45EC /* AnimationScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 92C984E02B2BC54000EE45EC /* AnimationScene.sks */; };
 		92C984E32B2BC54000EE45EC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 92C984E22B2BC54000EE45EC /* Actions.sks */; };
@@ -16,7 +21,6 @@
 		92C984EC2B2BC54300EE45EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92C984EA2B2BC54300EE45EC /* Main.storyboard */; };
 		92C984F42B2BCB6F00EE45EC /* FrameHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C984F32B2BCB6F00EE45EC /* FrameHelpers.swift */; };
 		92C984FA2B2BD4B200EE45EC /* CustomPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C984F92B2BD4B200EE45EC /* CustomPoint.swift */; };
-		92C984FC2B2C082800EE45EC /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C984FB2B2C082800EE45EC /* AnimationManager.swift */; };
 		92C984FE2B2C247600EE45EC /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C984FD2B2C247600EE45EC /* KeyboardManager.swift */; };
 		92C985002B2CC8E100EE45EC /* PiSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C984FF2B2CC8E100EE45EC /* PiSlice.swift */; };
 		92C985022B2D062900EE45EC /* FractalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C985012B2D062900EE45EC /* FractalData.swift */; };
@@ -28,6 +32,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-earth-3rd-age_base.png"; sourceTree = "<group>"; };
+		697BF6902D5A983D00584D4F /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		697BF6922D5A985E00584D4F /* DeployJourneyAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeployJourneyAnimation.swift; sourceTree = "<group>"; };
+		697BF6942D5ABCF800584D4F /* middle-earth-3rd-age.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-earth-3rd-age.png"; sourceTree = "<group>"; };
+		9229DE3D2B730E6900BB60D6 /* FolderIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderIcon.swift; sourceTree = "<group>"; };
 		92C984DB2B2BC54000EE45EC /* Animations-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Animations-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C984DE2B2BC54000EE45EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92C984E02B2BC54000EE45EC /* AnimationScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AnimationScene.sks; sourceTree = "<group>"; };
@@ -39,7 +48,6 @@
 		92C984ED2B2BC54300EE45EC /* Animations_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Animations_Demo.entitlements; sourceTree = "<group>"; };
 		92C984F32B2BCB6F00EE45EC /* FrameHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameHelpers.swift; sourceTree = "<group>"; };
 		92C984F92B2BD4B200EE45EC /* CustomPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPoint.swift; sourceTree = "<group>"; };
-		92C984FB2B2C082800EE45EC /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		92C984FD2B2C247600EE45EC /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		92C984FF2B2CC8E100EE45EC /* PiSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiSlice.swift; sourceTree = "<group>"; };
 		92C985012B2D062900EE45EC /* FractalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractalData.swift; sourceTree = "<group>"; };
@@ -61,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9229DE3A2B730AAE00BB60D6 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				697BF6942D5ABCF800584D4F /* middle-earth-3rd-age.png */,
+				697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
 		92C984D22B2BC54000EE45EC = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +97,7 @@
 		92C984DD2B2BC54000EE45EC /* Animations-Demo */ = {
 			isa = PBXGroup;
 			children = (
+				9229DE3A2B730AAE00BB60D6 /* res */,
 				92C9850B2B2EA37A00EE45EC /* ManagersHelpers */,
 				92C9850A2B2EA35700EE45EC /* SnowflakeFractal */,
 				92C985092B2EA34700EE45EC /* CustomNodes */,
@@ -103,6 +121,7 @@
 				92C984FF2B2CC8E100EE45EC /* PiSlice.swift */,
 				92C985052B2E79B200EE45EC /* TriConstructor.swift */,
 				92C9850E2B2ED27400EE45EC /* CustomPolygon.swift */,
+				9229DE3D2B730E6900BB60D6 /* FolderIcon.swift */,
 			);
 			path = CustomNodes;
 			sourceTree = "<group>";
@@ -120,8 +139,9 @@
 		92C9850B2B2EA37A00EE45EC /* ManagersHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				697BF6922D5A985E00584D4F /* DeployJourneyAnimation.swift */,
+				697BF6902D5A983D00584D4F /* Animation.swift */,
 				92C984FD2B2C247600EE45EC /* KeyboardManager.swift */,
-				92C984FB2B2C082800EE45EC /* AnimationManager.swift */,
 				92C984F32B2BCB6F00EE45EC /* FrameHelpers.swift */,
 			);
 			path = ManagersHelpers;
@@ -187,6 +207,8 @@
 			files = (
 				92C984E12B2BC54000EE45EC /* AnimationScene.sks in Resources */,
 				92C984E92B2BC54300EE45EC /* Assets.xcassets in Resources */,
+				697BF68F2D5A733500584D4F /* middle-earth-3rd-age_base.png in Resources */,
+				697BF6952D5ABCF800584D4F /* middle-earth-3rd-age.png in Resources */,
 				92C984E32B2BC54000EE45EC /* Actions.sks in Resources */,
 				92C984EC2B2BC54300EE45EC /* Main.storyboard in Resources */,
 			);
@@ -204,14 +226,16 @@
 				92C984E52B2BC54000EE45EC /* AnimationScene.swift in Sources */,
 				92C9850F2B2ED27400EE45EC /* CustomPolygon.swift in Sources */,
 				92C9850D2B2EA4BA00EE45EC /* MetalTypes.swift in Sources */,
-				92C984FC2B2C082800EE45EC /* AnimationManager.swift in Sources */,
 				92C985042B2E56EE00EE45EC /* CustomLine.swift in Sources */,
 				92C984FA2B2BD4B200EE45EC /* CustomPoint.swift in Sources */,
 				92C985082B2EA34200EE45EC /* SnowflakeMaker.swift in Sources */,
 				92C984DF2B2BC54000EE45EC /* AppDelegate.swift in Sources */,
+				697BF6912D5A984000584D4F /* Animation.swift in Sources */,
+				697BF6932D5A986300584D4F /* DeployJourneyAnimation.swift in Sources */,
 				92C984FE2B2C247600EE45EC /* KeyboardManager.swift in Sources */,
 				92C985062B2E79B200EE45EC /* TriConstructor.swift in Sources */,
 				92C985022B2D062900EE45EC /* FractalData.swift in Sources */,
+				9229DE3E2B730E6900BB60D6 /* FolderIcon.swift in Sources */,
 				92C984F42B2BCB6F00EE45EC /* FrameHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

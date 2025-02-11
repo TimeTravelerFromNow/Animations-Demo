@@ -3,19 +3,15 @@ import SpriteKit
 import GameplayKit
 
 class AnimationScene: SKScene {
-    
+    var animation: Animation!
+    var defaultZoom = 3.0
     var keysDown: [UInt16] = []
-    var titleAnimator: TitleTextA?
-    
-    var frameNumber: Int = 0 { didSet { titleAnimator?.setFrame(frameNumber) } }
-    
+        
     var fWidth : CGFloat  { return self.frame.width  }
     var fHeight : CGFloat { return self.frame.height  }
     var fCenter: CGPoint { return CGPoint(fWidth * 0.5, fHeight * 0.5) }
     private var _startT: TimeInterval = 0
     private var _timeEl: TimeInterval = 0
-    
-    let triOffset: CGFloat = 60
     
     func moveCam(to: CGPoint, d: TimeInterval) {
         let mA = SKAction.move(to: to, duration: d)
@@ -23,9 +19,7 @@ class AnimationScene: SKScene {
     }
     
     func returnCam(d: TimeInterval) {
-        var triCenter = fCenter
-        triCenter.y -= triOffset
-        let mA = SKAction.move(to: triCenter, duration: d )
+        let mA = SKAction.move(to: fCenter, duration: d )
         self.camera?.run(mA)
     }
     
@@ -35,46 +29,34 @@ class AnimationScene: SKScene {
     }
     
     func unZoomCam(d: TimeInterval) {
-        let zA = SKAction.scale(to: 1, duration: d)
+        let zA = SKAction.scale(to: self.defaultZoom, duration: d)
         self.camera?.run(zA)
     }
     
     
     override func didMove(to view: SKView) {
+        animation = DeployJourneyAnimation(self)
         _startT = CACurrentMediaTime()
-
-        runSnowflakeMakingCode()
         
         var cam = SKCameraNode()
+        cam.setScale(self.defaultZoom)
         addChild(cam)
-        cam.position = CGPoint(x: fWidth / 2,y: fHeight / 2 - triOffset)
+        cam.position = CGPoint(x: fWidth / 2,y: fHeight / 2)
         
         self.camera = cam
-        AnimationManager.Initialize(self)
-        titleAnimator = AnimationManager.getAnimation(.TitleText) as? TitleTextA
         
         self.backgroundColor = NSColor(red: 39 / 255, green: 41 / 255, blue: 69 / 255, alpha: 1)
     }
     
-    func runSnowflakeMakingCode() {
-        // MARK: kinda hacky, but Im converting my NDC to scene coordinates here. (ONLY CALL ONCE)
-        self.ndcToScene(&FractalData.zeroIteration)
-        var sfMaker = SnowflakeMaker()
-        sfMaker.kochIteration()
-        sfMaker.kochIteration()
-        sfMaker.kochIteration()
-    }
-    
     override func mouseDown(with event: NSEvent) {
-        AnimationManager.NextFrame()
-        frameNumber += 1
+        animation.animateStep()
+        print(event.locationInWindow.x, event.locationInWindow.y)
     }
     override func keyUp(with event: NSEvent) {
         let key = event.keyCode
         KeyboardManager.KeyUp(key)
         if event.keyCode == Keycode.space.rawValue {
-            frameNumber = 0
-            AnimationManager.StopAll()
+            animation.reset()
         }
     }
     
