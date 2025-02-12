@@ -49,7 +49,6 @@ class AnimationScene: SKScene {
     }
     
     override func mouseDown(with event: NSEvent) {
-        animation.animateStep()
         print(event.locationInWindow.x, event.locationInWindow.y)
     }
     override func keyUp(with event: NSEvent) {
@@ -62,6 +61,9 @@ class AnimationScene: SKScene {
     
     override func keyDown(with event: NSEvent) {
         KeyboardManager.KeyDown(event.keyCode)
+        if( event.keyCode == Keycode.rightArrow.rawValue) {
+            animation.animateStep()
+        }
     }
     
     private var _animationDelay: TimeInterval = 1 // needed so an animation can finish

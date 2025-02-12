@@ -43,6 +43,7 @@ class Animation: SKNode {
     
     func setupNodes() { } // override this
     func setupAnimationCode() { } //override, do not call "return" in custom code.
+    func cleanup() { }
         
     private func _removeNodesFromScene() {
         for n in _animationNodes {
@@ -60,8 +61,9 @@ class Animation: SKNode {
     func reset() {
         localFrame = 0
         _removeNodesFromScene()
-        (scene as! AnimationScene).returnCam(d: 1.0)
-        (scene as! AnimationScene).unZoomCam(d: 1.0)
+        (scene as! AnimationScene).returnCam(d: 0)
+        (scene as! AnimationScene).unZoomCam(d: 0)
+        cleanup()
     }
     
     // getters setters
