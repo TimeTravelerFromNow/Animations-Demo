@@ -13,7 +13,7 @@ enum DestinationIconType {
 
 class DeployJourneyAnimation: Animation {
     var bgImage: SKNode!
-    var pathNode: SKShapeNode!
+    var pathLines: [DestinationIconType:CustomLine] = [:]
     
     let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Unicorn]
     var destinationIconNodes: [DestinationIconType:SKShapeNode] = [:]
@@ -33,14 +33,13 @@ class DeployJourneyAnimation: Animation {
     override func setupNodes() {
         self.bgImage = SKSpriteNode(imageNamed: "middle-earth-3rd-age.png")
         self.pathPositionsCopy = pathPositions
-        self.pathNode = CustomSplinePath(splinePoints: &pathPositionsCopy, count: pathPositionsCopy.count)
-        bgImage.zPosition = -2
+        
+        bgImage.zPosition = -10
         bgImage.position = self.scene!.getCenter()
-        pathNode.position = self.scene!.getCenter()
         
         appendNode(bgImage)
-        appendNode(pathNode)
         buildDestinationIcons()
+        buildLinePathNodes()
     }
     
     private func buildDestinationIcons() {
@@ -50,6 +49,20 @@ class DeployJourneyAnimation: Animation {
 
         for (_, iconNode) in destinationIconNodes {
             appendNode(iconNode)
+        }
+    }
+    
+    private func buildLinePathNodes() {
+        for (i, destination) in destinationOrder.enumerated() {
+            if destination == destinationOrder.last { break }
+            let nextDestination = destinationOrder[i + 1]
+            
+            var customLine = CustomLine(p0: destinationPositions[destination]!, p1: destinationPositions[nextDestination]!)
+            customLine.position = self.scene!.getCenter()
+            customLine.zPosition = -3
+            
+            pathLines.updateValue( customLine, forKey: destination )
+            appendNode(customLine)
         }
     }
         
@@ -66,20 +79,22 @@ class DeployJourneyAnimation: Animation {
     
     override func setupAnimationCode() {
         addAnimationFrame {
-          print("initialized")
-            
-        }
-        addAnimationFrame {
             (self.scene as! AnimationScene).zoomCam(s: 2.5, d: 0.4)
-            (self.pathNode as! CustomSplinePath).animateDottedPath()
         }
+        for destination in destinationOrder {
+            if destination == destinationOrder.last { break }
+            guard let lineNode = pathLines[destination] else { continue }
+            
+            // each path line animation sequence
+            addAnimationFrame {
+                print("destination \(lineNode.position)")
+                lineNode.animate()
+            }
+        }
+        
         addAnimationFrame {
-            print("cleanup frame")
+            print("last spacer frame!")
         }
-    }
-    
-    override func cleanup() {
-       ( self.pathNode as! CustomSplinePath).cleanup()
     }
 }
 

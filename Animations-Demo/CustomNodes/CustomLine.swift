@@ -13,7 +13,7 @@ class CustomLine: SKShapeNode{
     
     private var _p1APos: CGPoint = CGPoint(0)
     
-    var color: float4 = float4(1, 1, 1, 1) { didSet { _setPath() } }
+    var color: float4 = float4(0.93, 0.2, 0.2, 1)
     
     var drawDur: TimeInterval = 1
     
@@ -33,23 +33,32 @@ class CustomLine: SKShapeNode{
     }
     
     private func _setPath() {
+        setDrawProperties()
         var lineP = CGMutablePath()
         
         lineP.move(to: p0)
         lineP.addLine(to: _p1APos)
         
+        self.path = lineP
+    }
+    func setDrawProperties() {
         self.strokeColor = NSColor( color )
+        self.fillColor = NSColor(color)
         self.alpha = CGFloat(color.w)
         
         self.glowWidth = 0
-        
-        self.path = lineP
+        self.lineWidth = 20
+    }
+    
+    init(p0: CGPoint, p1: CGPoint) {
+        super.init()
+        self.p0 = p0
+        self.p1 = p1
     }
     
     override init() {
         super.init()
-        self.zPosition = -1
-        _setPath()
+        setDrawProperties()
     }
     
     required init?(coder aDecoder: NSCoder) {
