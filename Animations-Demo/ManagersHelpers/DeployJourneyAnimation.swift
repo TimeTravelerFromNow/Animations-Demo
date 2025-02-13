@@ -14,6 +14,7 @@ enum DestinationIconType {
 class DeployJourneyAnimation: Animation {
     var bgImage: SKNode!
     var pathNode: SKShapeNode!
+    var dashedPathNode: SKShapeNode!
     
     let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Unicorn]
     var destinationIconNodes: [DestinationIconType:SKShapeNode] = [:]
@@ -34,13 +35,17 @@ class DeployJourneyAnimation: Animation {
         self.bgImage = SKSpriteNode(imageNamed: "middle-earth-3rd-age.png")
         self.pathPositionsCopy = pathPositions
         self.pathNode = CustomSplinePath(splinePoints: &pathPositionsCopy, count: pathPositionsCopy.count)
+        self.dashedPathNode = DashedSplinePath(fromSplinePath: pathNode.path!)
+
         bgImage.zPosition = -2
         bgImage.position = self.scene!.getCenter()
         pathNode.position = self.scene!.getCenter()
-        
+        dashedPathNode.position = self.scene!.getCenter()
+
+        appendNode(self.dashedPathNode)
         appendNode(bgImage)
         appendNode(pathNode)
-        buildDestinationIcons()
+//        buildDestinationIcons()
     }
     
     private func buildDestinationIcons() {
@@ -71,7 +76,7 @@ class DeployJourneyAnimation: Animation {
         }
         addAnimationFrame {
             (self.scene as! AnimationScene).zoomCam(s: 2.5, d: 0.4)
-            (self.pathNode as! CustomSplinePath).animateDottedPath()
+            (self.dashedPathNode as! DashedSplinePath).animateDottedPath()
         }
         addAnimationFrame {
             print("cleanup frame")
@@ -79,7 +84,7 @@ class DeployJourneyAnimation: Animation {
     }
     
     override func cleanup() {
-       ( self.pathNode as! CustomSplinePath).cleanup()
+//       ( self.dashedPathNode as! DashedSplinePath).cleanup()
     }
 }
 
