@@ -4,7 +4,7 @@ import simd
 
 extension CGFloat: SIMDScalar {
     public typealias SIMDMaskScalar = Int
-            
+    
     public typealias SIMD2Storage = SIMD2<CGFloat>
     
     public typealias SIMD4Storage = SIMD4<CGFloat>
@@ -16,6 +16,7 @@ extension CGFloat: SIMDScalar {
     public typealias SIMD32Storage = SIMD32<CGFloat>
     
     public typealias SIMD64Storage = SIMD64<CGFloat>
+    
 }
 
 typealias cg_float2 = SIMD2<CGFloat>
@@ -112,6 +113,11 @@ extension CGPoint: SIMDStorage {
     public var magnitude: CGFloat {
         return sqrt( self * self )
     }
+    
+    public var toSIMDFloat: SIMD2<Float> {
+        return SIMD2<Float>(Float(self.x), Float(self.y))
+    }
+    
     // didnt work with simd ?
     public static func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
         return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)

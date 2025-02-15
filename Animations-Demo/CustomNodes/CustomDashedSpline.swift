@@ -4,8 +4,9 @@ import SpriteKit
 // thanks to Stackoverflow user Fault for helping me solve this with shaders
 // https://stackoverflow.com/questions/79434753/animating-dashes-sequentially-over-a-spline-path-in-spritekit-how-can-i-fix-the
 class CustomDashedSpline:SKShapeNode {
-    var DURATION: TimeInterval = 3.0
-    
+    var DURATION: TimeInterval = 1.0
+    var fractionIndex: Int = -1
+    var _fractions: [Float] = []
     //set up shader uniform
     let u_lerp = SKUniform(name: "u_lerp", float:0)
     //shader code
@@ -15,8 +16,7 @@ class CustomDashedSpline:SKShapeNode {
     void main(){
     //draw based on an animated value (u_lerp) in range 0-1
     if (v_path_distance < (u_path_length * u_lerp)) {
-    gl_FragColor = texture2D(u_texture, v_tex_coord); //sample texture and draw fragment 
-
+    gl_FragColor = vec4(1.0,0.2,0.2,1.0); //sample texture and draw fragment 
     } else {
     gl_FragColor = 0; //else don't draw
     }
@@ -40,20 +40,30 @@ class CustomDashedSpline:SKShapeNode {
         return SKAction.customAction(withDuration: DURATION) {
         (node : SKNode!, elapsedTime : CGFloat) -> Void in
             let fraction = CGFloat(elapsedTime / CGFloat(self.DURATION))
-            let i = self.lerp(a:0, b:1, fraction:fraction)
+            var startingFraction:Float = 0.0
+            if self.fractionIndex > 0 { startingFraction = self._fractions[self.fractionIndex - 1] }
+            let i = self.lerp(a: CGFloat(startingFraction), b: CGFloat(self._fractions[self.fractionIndex]), fraction:fraction)
             self.u_lerp.floatValue = Float(i)
             }
     }
 
     func animate() {
+        if (fractionIndex < _fractions.count - 1) { fractionIndex += 1 }
         setPathDrawProperties()
         self.run(_dashesPathAnimation)
     }
+    func reset() {
+        fractionIndex = -1
+    }
+    
+    func setPathFractions(_ fractions: [Float]) {
+        self._fractions = fractions
+    }
 
     func setPathDrawProperties() {
-        self.lineWidth = 5
-        self.strokeColor = .white
-        
+        self.lineWidth = 10
+        self.strokeColor = .red
+        self.fillColor = .red
         
         shader_lerp_path_distance.uniforms = [ u_lerp ]
         self.strokeShader = shader_lerp_path_distance
