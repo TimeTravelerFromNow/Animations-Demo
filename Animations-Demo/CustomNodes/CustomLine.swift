@@ -64,4 +64,9 @@ class CustomLine: SKShapeNode{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func cleanup() {
+        self._p1APos = p0
+        self._setPath()
+    }
 }
