@@ -14,6 +14,7 @@ enum DestinationIconType {
 class DeployJourneyAnimation: Animation {
     var bgImage: SKNode!
     var dashedSplinePath: CustomDashedSpline!
+    var floatingLabel: CustomFloatingLabel!
     
     let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Unicorn, .Nginx]
     var destinationIconNodes: [DestinationIconType:SKShapeNode] = [:]
@@ -42,7 +43,6 @@ class DeployJourneyAnimation: Animation {
         var splineShapeNode = SKShapeNode(splinePoints: &pathPositionsCopy, count: pathPositionsCopy.count)
         var splinePath = splineShapeNode.path!
         
-        
         dashedSplinePath = CustomDashedSpline(sourcePath: splinePath )
         dashedSplinePath.position = self.scene!.getCenter()
         dashedSplinePath.setPathFractions(destinationFractions())
@@ -51,6 +51,9 @@ class DeployJourneyAnimation: Animation {
         
         appendNode(bgImage)
         buildDestinationIcons()
+        
+        self.floatingLabel = CustomFloatingLabel(title: "VPS", text: "Virtual private servers", subject: destinationIconNodes[.VPS])
+        appendNode(floatingLabel)
     }
     
     func destinationFractions() -> [Float] {

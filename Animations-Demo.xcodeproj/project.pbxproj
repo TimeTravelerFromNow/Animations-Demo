@@ -15,6 +15,7 @@
 		697BF6912D5A984000584D4F /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BF6902D5A983D00584D4F /* Animation.swift */; };
 		697BF6932D5A986300584D4F /* DeployJourneyAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BF6922D5A985E00584D4F /* DeployJourneyAnimation.swift */; };
 		69F5286D2D5FF70B0055EC86 /* CustomDashedSpline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5286C2D5FF7080055EC86 /* CustomDashedSpline.swift */; };
+		69F5286F2D613ED00055EC86 /* CustomFloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5286E2D613EB70055EC86 /* CustomFloatingLabel.swift */; };
 		69F94F052D5EA46D00AA9E21 /* nginx_logo_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F94F042D5EA46D00AA9E21 /* nginx_logo_dark.png */; };
 		92C984DF2B2BC54000EE45EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C984DE2B2BC54000EE45EC /* AppDelegate.swift */; };
 		92C984E12B2BC54000EE45EC /* AnimationScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 92C984E02B2BC54000EE45EC /* AnimationScene.sks */; };
@@ -41,6 +42,7 @@
 		697BF6902D5A983D00584D4F /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		697BF6922D5A985E00584D4F /* DeployJourneyAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeployJourneyAnimation.swift; sourceTree = "<group>"; };
 		69F5286C2D5FF7080055EC86 /* CustomDashedSpline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashedSpline.swift; sourceTree = "<group>"; };
+		69F5286E2D613EB70055EC86 /* CustomFloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingLabel.swift; sourceTree = "<group>"; };
 		69F94F042D5EA46D00AA9E21 /* nginx_logo_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nginx_logo_dark.png; sourceTree = "<group>"; };
 		92C984DB2B2BC54000EE45EC /* Animations-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Animations-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C984DE2B2BC54000EE45EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		92C985092B2EA34700EE45EC /* CustomNodes */ = {
 			isa = PBXGroup;
 			children = (
+				69F5286E2D613EB70055EC86 /* CustomFloatingLabel.swift */,
 				69F5286C2D5FF7080055EC86 /* CustomDashedSpline.swift */,
 				92C984F92B2BD4B200EE45EC /* CustomPoint.swift */,
 				92C985032B2E56EE00EE45EC /* CustomLine.swift */,
@@ -229,6 +232,7 @@
 				92C984DF2B2BC54000EE45EC /* AppDelegate.swift in Sources */,
 				697BF6912D5A984000584D4F /* Animation.swift in Sources */,
 				697BF6932D5A986300584D4F /* DeployJourneyAnimation.swift in Sources */,
+				69F5286F2D613ED00055EC86 /* CustomFloatingLabel.swift in Sources */,
 				69F5286D2D5FF70B0055EC86 /* CustomDashedSpline.swift in Sources */,
 				92C984FE2B2C247600EE45EC /* KeyboardManager.swift in Sources */,
 				92C985062B2E79B200EE45EC /* TriConstructor.swift in Sources */,
