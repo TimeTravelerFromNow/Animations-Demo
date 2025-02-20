@@ -144,6 +144,11 @@ extension CGPoint: SIMDStorage {
     public typealias Scalar = CGFloat
 }
 
+extension CGSize {
+    init(_ from: CGFloat) {
+        self.init(width: from, height: from)
+    }
+}
 
 extension SKNode : Frameable {
     func padIn(_ frame: SKNode, _ percentX: CGFloat, _ percentY: CGFloat) {

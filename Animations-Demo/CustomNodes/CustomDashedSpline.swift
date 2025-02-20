@@ -39,6 +39,7 @@ class CustomDashedSpline:SKShapeNode {
     private var _dashesPathAnimation: SKAction {
         return SKAction.customAction(withDuration: DURATION) {
         (node : SKNode!, elapsedTime : CGFloat) -> Void in
+            if (self.fractionIndex > self._fractions.count || self.fractionIndex < 0) { return }
             let fraction = CGFloat(elapsedTime / CGFloat(self.DURATION))
             var startingFraction:Float = 0.0
             if self.fractionIndex > 0 { startingFraction = self._fractions[self.fractionIndex - 1] }
@@ -53,7 +54,8 @@ class CustomDashedSpline:SKShapeNode {
         self.run(_dashesPathAnimation)
     }
     func reset() {
-        fractionIndex = -1
+        fractionIndex = -2 // DANGER bad code
+        animate()
     }
     
     func setPathFractions(_ fractions: [Float]) {

@@ -7,6 +7,7 @@ class CustomFloatingLabel: SKNode {
     var descriptionText: String
     
     var titleNode: SKLabelNode!
+    // SKShapeNode(rectOf: textParentNode) instead of rect: uses the size at center to make shape
     var titleBackground: SKShapeNode!
     
     var descriptionNode: SKLabelNode!
@@ -19,8 +20,8 @@ class CustomFloatingLabel: SKNode {
         super.init()
         
         buildFloatingTitle(position: subject?.position)
-        let descriptionOffset = self.titleBackground.frame.height + 20
-        buildFloatingDescription(top: descriptionOffset)
+        var descriptionPosition = self.titleNode.position
+        buildFloatingDescription(position: descriptionPosition)
     }
     
     func buildFloatingTitle(position: CGPoint?) {
@@ -37,24 +38,32 @@ class CustomFloatingLabel: SKNode {
         self.addChild(titleBackground)
     }
     
-    func buildFloatingDescription(top: CGFloat) {
+    func buildFloatingDescription(position: CGPoint?) {
+        
         self.descriptionNode = SKLabelNode(fontNamed: "Chalkduster")
         
-        self.descriptionNode.position = self.titleNode.position
+        self.descriptionNode.position = position ?? CGPoint(x:0,y:0)
+
+        // allow 0 (undefined #) of lines (default 1)
+        self.descriptionNode.numberOfLines = 0
+
+        self.descriptionNode.lineBreakMode = .byWordWrapping
+        self.descriptionNode.preferredMaxLayoutWidth = 200
+        self.descriptionNode.verticalAlignmentMode = .top
+
         
         self.descriptionNode.text = self.descriptionText
-        self.descriptionNode.fontSize = 8
+        self.descriptionNode.fontSize = 12
         
         var backgroundRectangle = descriptionNode.frame.insetBy(dx: -10, dy: -10)
-        self.descriptionBackground = SKShapeNode(rect: backgroundRectangle, cornerRadius: 10)
+        self.descriptionBackground = SKShapeNode(rectOf: backgroundRectangle.size, cornerRadius: 10)
         descriptionBackground.fillColor = .white
         descriptionNode.fontColor = .black
         
-        descriptionNode.position.y -= top
-        descriptionBackground.position = descriptionNode.position
-        
+        descriptionNode.position.y -= 40
         self.addChild(descriptionNode)
-        self.addChild(descriptionBackground)
+        descriptionBackground.zPosition = -1
+        descriptionNode.addChild(descriptionBackground)
     }
     
     required init?(coder aDecoder: NSCoder) {

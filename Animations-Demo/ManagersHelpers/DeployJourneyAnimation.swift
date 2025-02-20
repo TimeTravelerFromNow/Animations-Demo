@@ -52,7 +52,7 @@ class DeployJourneyAnimation: Animation {
         appendNode(bgImage)
         buildDestinationIcons()
         
-        self.floatingLabel = CustomFloatingLabel(title: "VPS", text: "Virtual private servers", subject: destinationIconNodes[.VPS])
+        self.floatingLabel = CustomFloatingLabel(title: "VPS", text: "Virtual private servers are the land you own on the internet, well more like rent", subject: destinationIconNodes[.VPS])
         appendNode(floatingLabel)
     }
     
