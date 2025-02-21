@@ -83,7 +83,18 @@ class CustomFloatingLabel: SKNode {
     
     
     private var _fIA: SKAction { return SKAction.fadeIn(withDuration: _DURATION) }
-    private var _fOA: SKAction { return SKAction.fadeOut(withDuration: _DURATION) }
+
+    private var _fadeOutAll: SKAction { return SKAction.customAction(withDuration: _DURATION) {
+        (node : SKNode!, elapsedTime : CGFloat) -> Void in
+            node.alpha = 1.0 - elapsedTime / self._DURATION
+        }
+    }
+    private var _removeFromParent: SKAction { return SKAction.customAction(withDuration: 0) {
+        (node : SKNode!, elapsedTime : CGFloat) -> Void in
+            self.removeFromParent()
+        }
+    }
+    private var _fadeOutAndRemove: SKAction { return SKAction.sequence([_fadeOutAll, _removeFromParent]) }
 
     func hideAll() {
         for node in children {
@@ -103,10 +114,7 @@ class CustomFloatingLabel: SKNode {
     }
     
     func animateFadeOut() {
-        self.titleNode.run(_fOA)
-        self.titleBackground.run(_fOA)
-        self.descriptionNode.run(_fOA)
-        self.descriptionBackground.run(_fOA)
+        self.run(_fadeOutAndRemove)
     }
     
     required init?(coder aDecoder: NSCoder) {

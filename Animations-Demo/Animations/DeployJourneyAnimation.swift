@@ -100,10 +100,6 @@ class DeployJourneyAnimation: Animation {
                                        forKey: destinationType)
             
         }
-        
-        for (_, floatingLabelNode) in floatingLabels {
-            appendNode(floatingLabelNode)
-        }
     }
     
         
@@ -132,6 +128,7 @@ class DeployJourneyAnimation: Animation {
             }
             
             if let floatingLabel = floatingLabels[destination] {
+                if !(floatingLabel.inParentHierarchy(self)) { self.addChild(floatingLabel) }
                 //title fade in
                 addAnimationFrame {
                     floatingLabel.animateFadeIn()
@@ -167,6 +164,9 @@ class DeployJourneyAnimation: Animation {
     
     override func cleanup() {
         dashedSplinePath.reset()
+        // dont retain nodes, cant rerun the animation without bugs otherwise
+        destinationIconNodes = [:]
+        floatingLabels = [:]
     }
 }
 
