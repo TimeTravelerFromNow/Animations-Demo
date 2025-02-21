@@ -14,7 +14,6 @@ enum DestinationIconType {
 class DeployJourneyAnimation: Animation {
     var bgImage: SKNode!
     var dashedSplinePath: CustomDashedSpline!
-    var floatingLabel: CustomFloatingLabel!
     
     let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Unicorn, .Nginx]
     var destinationIconNodes: [DestinationIconType:SKShapeNode] = [:]
@@ -30,6 +29,7 @@ class DeployJourneyAnimation: Animation {
      .Unicorn:CGPoint(x: 10, y: -200),
      .Nginx:CGPoint(x: 70, y: -100)
     ]
+    var floatingLabels: [DestinationIconType:CustomFloatingLabel] = [:]
     var pathPositions: [CGPoint] { return destinationOrder.map { destinationPositions[$0]! } }
     var pathPositionsCopy: [CGPoint] = []
     
@@ -51,9 +51,7 @@ class DeployJourneyAnimation: Animation {
         
         appendNode(bgImage)
         buildDestinationIcons()
-        
-        self.floatingLabel = CustomFloatingLabel(title: "VPS", text: "Virtual private servers are the land you own on the internet, well more like rent", subject: destinationIconNodes[.VPS])
-        appendNode(floatingLabel)
+        buildFloatingLabels()
     }
     
     func destinationFractions() -> [Float] {
@@ -94,6 +92,20 @@ class DeployJourneyAnimation: Animation {
         }
     }
     
+    private func buildFloatingLabels() {
+        for (title, descriptionText, destinationType) in deployJourneyDescriptionData {
+            floatingLabels.updateValue(CustomFloatingLabel(title: title,
+                                                           text: descriptionText,
+                                                           subject: destinationIconNodes[destinationType]),
+                                       forKey: destinationType)
+            
+        }
+        
+        for (_, floatingLabelNode) in floatingLabels {
+            appendNode(floatingLabelNode)
+        }
+    }
+    
         
     private func createLogoIcon(iconType: DestinationIconType) -> SKShapeNode {
         guard let imageNamed = destinationFileNames[iconType] else { fatalError("no file string for \(iconType)") }
@@ -101,7 +113,7 @@ class DeployJourneyAnimation: Animation {
         var icon = SKShapeNode(circleOfRadius: 40)
         icon.fillTexture = SKTexture(imageNamed: imageNamed)
         icon.fillColor = .white
-//        icon.lineWidth = 10
+
         icon.position = self.scene!.getCenter() + position
         return icon
     }
@@ -110,13 +122,40 @@ class DeployJourneyAnimation: Animation {
         addAnimationFrame {
             (self.scene as! AnimationScene).zoomCam(s: 2, d: 0.4)
         }
+        
+        // first animate camera going to each destination, and fade in floating labels describing destination.
         for (i, destination) in destinationOrder.enumerated() {
-            if i == 0 { continue }
             // each path line animation sequence
             addAnimationFrame {
-                print("destination \(self.destinationPositions[destination]!)")
                 guard let animationScene = (self.scene as? AnimationScene) else { return }
                 animationScene.moveCam(to: self.destinationPositions[destination]! + animationScene.getCenter(), d: 1.0)
+            }
+            
+            if let floatingLabel = floatingLabels[destination] {
+                //title fade in
+                addAnimationFrame {
+                    floatingLabel.animateFadeIn()
+                }
+                // description fade in
+                addAnimationFrame {
+                    floatingLabel.animateFadeIn()
+                }
+                //fade out
+                addAnimationFrame {
+                    floatingLabel.animateFadeOut()
+                }
+            }
+        }
+        
+        // Then after we can animate the red dotted path journey
+        for (i, destination) in destinationOrder.enumerated() {
+            addAnimationFrame {
+                guard let animationScene = (self.scene as? AnimationScene) else { return }
+                animationScene.moveCam(to: self.destinationPositions[destination]! + animationScene.getCenter(), d: 1.0)
+            }
+            if i == 0 { continue }
+                            
+            addAnimationFrame {
                 self.dashedSplinePath.animate(from: i - 1, to: i)
             }
         }

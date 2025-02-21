@@ -4,12 +4,12 @@ import SpriteKit
 class CustomFloatingLabel: SKNode {
     let _WIDTH: CGFloat!
     let _PADDING: CGFloat! // == margin
+    let _DURATION: TimeInterval = 0.6
     weak var subject: SKNode?
     var title: String
     var descriptionText: String
     
     var titleNode: SKLabelNode!
-    // SKShapeNode(rectOf: textParentNode) instead of rect: uses the size at center to make shape
     var titleBackground: SKShapeNode!
     
     var descriptionNode: SKLabelNode!
@@ -30,6 +30,7 @@ class CustomFloatingLabel: SKNode {
         
         var descriptionPosition = self.titleNode.position
         buildFloatingDescription(position: descriptionPosition)
+        self.hideAll()
     }
     
     func buildFloatingTitle(position: CGPoint?) {
@@ -41,6 +42,8 @@ class CustomFloatingLabel: SKNode {
         var titleRect = titleNode.frame.insetBy(dx: -10, dy: -10)
         // override size with _WIDTH constant
         var titleSize = CGSize(width: _WIDTH, height: titleRect.height + 10)
+        
+        // SKShapeNode(rectOf: textParentNode) instead of rect: uses the size at center to make shape
         self.titleBackground = SKShapeNode(rectOf: titleSize, cornerRadius: 10)
         titleBackground.fillColor = .white
         titleNode.fontColor = .black
@@ -79,15 +82,31 @@ class CustomFloatingLabel: SKNode {
     }
     
     
-    private let _fIA: SKAction = SKAction.fadeIn(withDuration: 1)
-    let _DELAY: TimeInterval = 1
-    func fadeIn(wait: Bool = false) {
-        if wait {
-            let delayA = SKAction.wait(forDuration: _DELAY)
-            self.run( SKAction.group([ delayA, _fIA]) )
-        } else {
-            self.run(_fIA)
+    private var _fIA: SKAction { return SKAction.fadeIn(withDuration: _DURATION) }
+    private var _fOA: SKAction { return SKAction.fadeOut(withDuration: _DURATION) }
+
+    func hideAll() {
+        for node in children {
+            node.alpha = 0.0
         }
+    }
+    
+    func animateFadeIn() {
+        // First run title fade in, then description
+        if self.titleNode.alpha == 0.0 {
+            self.titleNode.run(_fIA)
+            self.titleBackground.run(_fIA)
+        } else if self.descriptionNode.alpha == 0.0 {
+            self.descriptionNode.run(_fIA)
+            self.descriptionBackground.run(_fIA)
+        }
+    }
+    
+    func animateFadeOut() {
+        self.titleNode.run(_fOA)
+        self.titleBackground.run(_fOA)
+        self.descriptionNode.run(_fOA)
+        self.descriptionBackground.run(_fOA)
     }
     
     required init?(coder aDecoder: NSCoder) {
