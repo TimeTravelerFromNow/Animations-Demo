@@ -68,13 +68,14 @@ class DeployJourneyAnimation: Animation {
         }
         
         //calculating each segments distance
-        var outputSegmentPercentLengths = [Float].init(repeating: 0.0, count: pathPositions.count - 1)
+        var outputSegmentPercentLengths = [Float].init(repeating: 0.0, count: pathPositions.count)
         var fractionSum: Float = 0.0
         prevPoint = pathPositions.first
+        // first output value is 0.0
         for i in 1..<pathPositions.count {
             let destination = pathPositions[i]
             fractionSum += distance(prevPoint!.toSIMDFloat, destination.toSIMDFloat) / length
-            outputSegmentPercentLengths[i - 1] = fractionSum
+            outputSegmentPercentLengths[i] = fractionSum
             prevPoint = destination
         }
         
@@ -116,7 +117,7 @@ class DeployJourneyAnimation: Animation {
                 print("destination \(self.destinationPositions[destination]!)")
                 guard let animationScene = (self.scene as? AnimationScene) else { return }
                 animationScene.moveCam(to: self.destinationPositions[destination]! + animationScene.getCenter(), d: 1.0)
-                self.dashedSplinePath.animate()
+                self.dashedSplinePath.animate(from: i - 1, to: i)
             }
         }
         

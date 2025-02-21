@@ -5,8 +5,9 @@ import SpriteKit
 // https://stackoverflow.com/questions/79434753/animating-dashes-sequentially-over-a-spline-path-in-spritekit-how-can-i-fix-the
 class CustomDashedSpline:SKShapeNode {
     var DURATION: TimeInterval = 1.0
-    var fractionIndex: Int = -1
-    var _fractions: [Float] = []
+    var startIndex: Int = 0
+    var endIndex: Int = 1
+    var _fractions: [CGFloat] = []
     //set up shader uniform
     let u_lerp = SKUniform(name: "u_lerp", float:0)
     //shader code
@@ -33,33 +34,45 @@ class CustomDashedSpline:SKShapeNode {
     }
     
     // helper: animate a value from 0-1 and update the shader uniform
-    func lerp(a:CGFloat, b:CGFloat, fraction:CGFloat) -> CGFloat {
-        return (b-a) * fraction + a
+    func lerp(a:CGFloat, b:CGFloat, percent:CGFloat) -> CGFloat {
+        return (b-a) * percent + a
     }
     private var _dashesPathAnimation: SKAction {
         return SKAction.customAction(withDuration: DURATION) {
-        (node : SKNode!, elapsedTime : CGFloat) -> Void in
-            if (self.fractionIndex > self._fractions.count || self.fractionIndex < 0) { return }
-            let fraction = CGFloat(elapsedTime / CGFloat(self.DURATION))
-            var startingFraction:Float = 0.0
-            if self.fractionIndex > 0 { startingFraction = self._fractions[self.fractionIndex - 1] }
-            let i = self.lerp(a: CGFloat(startingFraction), b: CGFloat(self._fractions[self.fractionIndex]), fraction:fraction)
-            self.u_lerp.floatValue = Float(i)
-            }
+            (node : SKNode!, elapsedTime : CGFloat) -> Void in
+                
+                let elapsedAmount = CGFloat(elapsedTime / CGFloat(self.DURATION))
+                
+                let startFraction = self._fractions[self.startIndex]
+                let endFraction = self._fractions[self.endIndex]
+                            
+                let animationFraction = self.lerp(a: startFraction,
+                                                  b: endFraction,
+                                                  percent:elapsedAmount)
+                self.u_lerp.floatValue = Float(animationFraction)
+        }
     }
-
-    func animate() {
-        if (fractionIndex < _fractions.count - 1) { fractionIndex += 1 }
+    
+    func animate(from: Int, to: Int) {
+        print(" animating from \(from), to: \(to)")
+        assert(to < self._fractions.count && to > 0)
+        assert(from < self._fractions.count && from >= 0)
+        
+        self.startIndex = from
+        self.endIndex = to
+        
         setPathDrawProperties()
+        
         self.run(_dashesPathAnimation)
     }
+    
     func reset() {
-        fractionIndex = -2 // DANGER bad code
-        animate()
+        startIndex = 0 // DANGER bad code
+        u_lerp.floatValue = 0.0
     }
     
     func setPathFractions(_ fractions: [Float]) {
-        self._fractions = fractions
+        self._fractions = fractions.map { CGFloat($0) }
     }
 
     func setPathDrawProperties() {
