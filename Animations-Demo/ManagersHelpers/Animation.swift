@@ -1,6 +1,7 @@
 import SpriteKit
 
 class Animation: SKNode {
+    // animationNodes are all initially visible nodes, immediately "behind the curtain"
     private var _animationNodes: [SKNode] = []
     private lazy var _customAnimationFrameCodeBlocks: [ () -> (Void) ] = []
     
@@ -29,14 +30,13 @@ class Animation: SKNode {
         }
         
         if localFrame >= frameCount {
-            // this animation is done, remove the nodes
+            // this animation is done, call reset
             reset()
             return
         }
         
         // call the custom animation code
         _customAnimationFrameCodeBlocks[localFrame]()
-        
         
         localFrame += 1
     }
@@ -49,6 +49,7 @@ class Animation: SKNode {
         for n in _animationNodes {
             n.removeFromParent()
         }
+        removeAllChildren()
     }
     
     private func _addNodesToScene() {
@@ -59,11 +60,22 @@ class Animation: SKNode {
     }
     
     func reset() {
+        cleanup() // run custom cleanup
+        
+        // reset values, remove all nodes
         localFrame = 0
         _removeNodesFromScene()
+        _customAnimationFrameCodeBlocks = []
+    }
+    
+    func restart() {
         (scene as! AnimationScene).returnCam(d: 0)
         (scene as! AnimationScene).unZoomCam(d: 0)
-        cleanup()
+
+        reset()
+        
+        setupNodes()
+        setupAnimationCode()
     }
     
     // getters setters

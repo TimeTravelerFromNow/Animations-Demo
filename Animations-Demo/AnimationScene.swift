@@ -55,7 +55,7 @@ class AnimationScene: SKScene {
         let key = event.keyCode
         KeyboardManager.KeyUp(key)
         if event.keyCode == Keycode.space.rawValue {
-            animation.reset()
+            animation.restart()
         }
     }
     

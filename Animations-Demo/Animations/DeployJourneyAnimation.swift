@@ -121,16 +121,16 @@ class DeployJourneyAnimation: Animation {
         
         // first animate camera going to each destination, and fade in floating labels describing destination.
         for (i, destination) in destinationOrder.enumerated() {
-            // each path line animation sequence
+            // camera goes to each destination
             addAnimationFrame {
                 guard let animationScene = (self.scene as? AnimationScene) else { return }
                 animationScene.moveCam(to: self.destinationPositions[destination]! + animationScene.getCenter(), d: 1.0)
             }
             
-            if let floatingLabel = floatingLabels[destination] {
-                if !(floatingLabel.inParentHierarchy(self)) { self.addChild(floatingLabel) }
+            if var floatingLabel = floatingLabels[destination] {
                 //title fade in
                 addAnimationFrame {
+                    self.addChild(floatingLabel)
                     floatingLabel.animateFadeIn()
                 }
                 // description fade in
@@ -149,11 +149,10 @@ class DeployJourneyAnimation: Animation {
             addAnimationFrame {
                 guard let animationScene = (self.scene as? AnimationScene) else { return }
                 animationScene.moveCam(to: self.destinationPositions[destination]! + animationScene.getCenter(), d: 1.0)
-            }
-            if i == 0 { continue }
-                            
-            addAnimationFrame {
-                self.dashedSplinePath.animate(from: i - 1, to: i)
+            
+                if i != 0 {
+                    self.dashedSplinePath.animate(from: i - 1, to: i)
+                }
             }
         }
         
