@@ -49,7 +49,9 @@ class AnimationScene: SKScene {
     }
     
     override func mouseDown(with event: NSEvent) {
-        print(event.locationInWindow.x, event.locationInWindow.y)
+//        print(event.locationInWindow.x, event.locationInWindow.y)
+        var inScenePos = event.location(in: self) - self.fCenter
+        print(inScenePos.x, inScenePos.y)
     }
     override func keyUp(with event: NSEvent) {
         let key = event.keyCode

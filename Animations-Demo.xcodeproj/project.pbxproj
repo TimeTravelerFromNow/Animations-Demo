@@ -15,6 +15,8 @@
 		697BF68F2D5A733500584D4F /* middle-earth-3rd-age_base.png in Resources */ = {isa = PBXBuildFile; fileRef = 697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */; };
 		697BF6912D5A984000584D4F /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BF6902D5A983D00584D4F /* Animation.swift */; };
 		697BF6932D5A986300584D4F /* DeployJourneyAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BF6922D5A985E00584D4F /* DeployJourneyAnimation.swift */; };
+		698895A52D6C3D8200F27A13 /* middle-earth-map-re-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 698895A42D6C3D8200F27A13 /* middle-earth-map-re-color.png */; };
+		698895A72D6C405800F27A13 /* middle-earth-original-journey.png in Resources */ = {isa = PBXBuildFile; fileRef = 698895A62D6C405800F27A13 /* middle-earth-original-journey.png */; };
 		69E61E0A2D68399900782774 /* FloatingLabelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E61E092D68398D00782774 /* FloatingLabelData.swift */; };
 		69F5286D2D5FF70B0055EC86 /* CustomDashedSpline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5286C2D5FF7080055EC86 /* CustomDashedSpline.swift */; };
 		69F5286F2D613ED00055EC86 /* CustomFloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5286E2D613EB70055EC86 /* CustomFloatingLabel.swift */; };
@@ -39,6 +41,8 @@
 		697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-earth-3rd-age_base.png"; sourceTree = "<group>"; };
 		697BF6902D5A983D00584D4F /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		697BF6922D5A985E00584D4F /* DeployJourneyAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeployJourneyAnimation.swift; sourceTree = "<group>"; };
+		698895A42D6C3D8200F27A13 /* middle-earth-map-re-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-earth-map-re-color.png"; sourceTree = "<group>"; };
+		698895A62D6C405800F27A13 /* middle-earth-original-journey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-earth-original-journey.png"; sourceTree = "<group>"; };
 		69E61E092D68398D00782774 /* FloatingLabelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelData.swift; sourceTree = "<group>"; };
 		69F5286C2D5FF7080055EC86 /* CustomDashedSpline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashedSpline.swift; sourceTree = "<group>"; };
 		69F5286E2D613EB70055EC86 /* CustomFloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingLabel.swift; sourceTree = "<group>"; };
@@ -79,12 +83,14 @@
 		9229DE3A2B730AAE00BB60D6 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				698895A42D6C3D8200F27A13 /* middle-earth-map-re-color.png */,
 				69F94F042D5EA46D00AA9E21 /* nginx_logo_dark.png */,
 				695EA41B2D5D35DE00D4FAAE /* unicorn-logo.png */,
 				695EA40F2D5C425F00D4FAAE /* digital-ocean-logo.png */,
 				695EA40B2D5C0F7800D4FAAE /* middle-earth-3rd-age.png */,
 				697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */,
 				695EA4192D5D0DCD00D4FAAE /* ssh-console.png */,
+				698895A62D6C405800F27A13 /* middle-earth-original-journey.png */,
 			);
 			path = res;
 			sourceTree = "<group>";
@@ -203,11 +209,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				695EA41A2D5D0DCD00D4FAAE /* ssh-console.png in Resources */,
+				698895A72D6C405800F27A13 /* middle-earth-original-journey.png in Resources */,
 				69F94F052D5EA46D00AA9E21 /* nginx_logo_dark.png in Resources */,
 				92C984E12B2BC54000EE45EC /* AnimationScene.sks in Resources */,
 				92C984E92B2BC54300EE45EC /* Assets.xcassets in Resources */,
 				697BF68F2D5A733500584D4F /* middle-earth-3rd-age_base.png in Resources */,
 				695EA4102D5C425F00D4FAAE /* digital-ocean-logo.png in Resources */,
+				698895A52D6C3D8200F27A13 /* middle-earth-map-re-color.png in Resources */,
 				92C984E32B2BC54000EE45EC /* Actions.sks in Resources */,
 				695EA40C2D5C0F7800D4FAAE /* middle-earth-3rd-age.png in Resources */,
 				92C984EC2B2BC54300EE45EC /* Main.storyboard in Resources */,

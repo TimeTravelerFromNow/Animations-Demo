@@ -20,11 +20,12 @@ class DeployJourneyAnimation: Animation {
     var pathPositionsCopy: [CGPoint] = []
     
     override func setupNodes() {
-        self.bgImage = SKSpriteNode(imageNamed: "middle-earth-3rd-age.png")
+        self.bgImage = SKSpriteNode(imageNamed: "middle-earth-map-re-color.png")
         self.pathPositionsCopy = pathPositions
         
         bgImage.zPosition = -10
         bgImage.position = self.scene!.getCenter()
+        bgImage.setScale(2.0)
         
         var splineShapeNode = SKShapeNode(splinePoints: &pathPositionsCopy, count: pathPositionsCopy.count)
         var splinePath = splineShapeNode.path!
