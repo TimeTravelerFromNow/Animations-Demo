@@ -15,7 +15,7 @@ class CustomFloatingLabel: SKNode {
     var descriptionNode: SKLabelNode!
     var descriptionBackground: SKShapeNode!
     
-    init(title: String, text: String, subject: SKNode? = nil, width: CGFloat = 200, padding: CGFloat = 10) {
+    init(title: String, text: String, subject: SKNode? = nil, right: Bool = true, width: CGFloat = 200, padding: CGFloat = 10) {
         self.subject = subject
         self.title = title
         self.descriptionText = text
@@ -24,7 +24,10 @@ class CustomFloatingLabel: SKNode {
         super.init()
         
         // left of subject
-        var position = subject == nil ? nil : CGPoint(x: subject!.position.x - subject!.frame.minX, y: subject!.position.y)
+        var horizontalOffset: CGFloat! = right ? _WIDTH : -_WIDTH
+//        horizontalOffset = subject == nil ? horizontalOffset : 
+        horizontalOffset = horizontalOffset / 2
+        var position = subject == nil ? nil : CGPoint(x: subject!.position.x + horizontalOffset, y: subject!.position.y)
         
         buildFloatingTitle(position: position)
         

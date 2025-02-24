@@ -10,25 +10,12 @@ enum DestinationIconType {
     case HTTPS
 }
 
-
 class DeployJourneyAnimation: Animation {
     var bgImage: SKNode!
     var dashedSplinePath: CustomDashedSpline!
-    
-    let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Unicorn, .Nginx]
+
+    // Helper animation data derivced from above.
     var destinationIconNodes: [DestinationIconType:SKShapeNode] = [:]
-    let destinationFileNames: [DestinationIconType:String] =
-    [.VPS:"digital-ocean-logo.png",
-     .SSH:"ssh-console.png",
-     .Unicorn:"unicorn-logo.png",
-     .Nginx:"nginx_logo_dark.png"
-    ]
-    let destinationPositions: [DestinationIconType:CGPoint] =
-    [.VPS:CGPoint(x:-300,y:200),
-     .SSH:CGPoint(x:-100,y:180),
-     .Unicorn:CGPoint(x: 10, y: -200),
-     .Nginx:CGPoint(x: 70, y: -100)
-    ]
     var floatingLabels: [DestinationIconType:CustomFloatingLabel] = [:]
     var pathPositions: [CGPoint] { return destinationOrder.map { destinationPositions[$0]! } }
     var pathPositionsCopy: [CGPoint] = []
@@ -94,9 +81,12 @@ class DeployJourneyAnimation: Animation {
     
     private func buildFloatingLabels() {
         for (title, descriptionText, destinationType) in deployJourneyDescriptionData {
+            let isRight = rightDestinationLabels.contains(destinationType)
+
             floatingLabels.updateValue(CustomFloatingLabel(title: title,
                                                            text: descriptionText,
-                                                           subject: destinationIconNodes[destinationType]),
+                                                           subject: destinationIconNodes[destinationType],
+                                                           right: isRight),
                                        forKey: destinationType)
             
         }
@@ -124,7 +114,7 @@ class DeployJourneyAnimation: Animation {
             // camera goes to each destination
             addAnimationFrame {
                 guard let animationScene = (self.scene as? AnimationScene) else { return }
-                animationScene.moveCam(to: self.destinationPositions[destination]! + animationScene.getCenter(), d: 1.0)
+                animationScene.moveCam(to: destinationPositions[destination]! + animationScene.getCenter(), d: 1.0)
             }
             
             if var floatingLabel = floatingLabels[destination] {
@@ -148,7 +138,7 @@ class DeployJourneyAnimation: Animation {
         for (i, destination) in destinationOrder.enumerated() {
             addAnimationFrame {
                 guard let animationScene = (self.scene as? AnimationScene) else { return }
-                animationScene.moveCam(to: self.destinationPositions[destination]! + animationScene.getCenter(), d: 1.0)
+                animationScene.moveCam(to: destinationPositions[destination]! + animationScene.getCenter(), d: 1.0)
             
                 if i != 0 {
                     self.dashedSplinePath.animate(from: i - 1, to: i)
