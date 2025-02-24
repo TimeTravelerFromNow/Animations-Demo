@@ -11,6 +11,7 @@
 		695EA4102D5C425F00D4FAAE /* digital-ocean-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 695EA40F2D5C425F00D4FAAE /* digital-ocean-logo.png */; };
 		695EA41A2D5D0DCD00D4FAAE /* ssh-console.png in Resources */ = {isa = PBXBuildFile; fileRef = 695EA4192D5D0DCD00D4FAAE /* ssh-console.png */; };
 		695EA41C2D5D35DE00D4FAAE /* unicorn-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 695EA41B2D5D35DE00D4FAAE /* unicorn-logo.png */; };
+		697530E32D6C284A005C58C7 /* LabeledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697530E22D6C283B005C58C7 /* LabeledIcon.swift */; };
 		697BF68F2D5A733500584D4F /* middle-earth-3rd-age_base.png in Resources */ = {isa = PBXBuildFile; fileRef = 697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */; };
 		697BF6912D5A984000584D4F /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BF6902D5A983D00584D4F /* Animation.swift */; };
 		697BF6932D5A986300584D4F /* DeployJourneyAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697BF6922D5A985E00584D4F /* DeployJourneyAnimation.swift */; };
@@ -34,6 +35,7 @@
 		695EA40F2D5C425F00D4FAAE /* digital-ocean-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "digital-ocean-logo.png"; sourceTree = "<group>"; };
 		695EA4192D5D0DCD00D4FAAE /* ssh-console.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ssh-console.png"; sourceTree = "<group>"; };
 		695EA41B2D5D35DE00D4FAAE /* unicorn-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unicorn-logo.png"; sourceTree = "<group>"; };
+		697530E22D6C283B005C58C7 /* LabeledIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledIcon.swift; sourceTree = "<group>"; };
 		697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-earth-3rd-age_base.png"; sourceTree = "<group>"; };
 		697BF6902D5A983D00584D4F /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		697BF6922D5A985E00584D4F /* DeployJourneyAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeployJourneyAnimation.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		92C985092B2EA34700EE45EC /* CustomNodes */ = {
 			isa = PBXGroup;
 			children = (
+				697530E22D6C283B005C58C7 /* LabeledIcon.swift */,
 				69F5286E2D613EB70055EC86 /* CustomFloatingLabel.swift */,
 				69F5286C2D5FF7080055EC86 /* CustomDashedSpline.swift */,
 			);
@@ -224,6 +227,7 @@
 				92C984DF2B2BC54000EE45EC /* AppDelegate.swift in Sources */,
 				697BF6912D5A984000584D4F /* Animation.swift in Sources */,
 				697BF6932D5A986300584D4F /* DeployJourneyAnimation.swift in Sources */,
+				697530E32D6C284A005C58C7 /* LabeledIcon.swift in Sources */,
 				69F5286F2D613ED00055EC86 /* CustomFloatingLabel.swift in Sources */,
 				69E61E0A2D68399900782774 /* FloatingLabelData.swift in Sources */,
 				69F5286D2D5FF70B0055EC86 /* CustomDashedSpline.swift in Sources */,

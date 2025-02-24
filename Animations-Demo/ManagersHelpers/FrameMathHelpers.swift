@@ -175,3 +175,7 @@ protocol Frameable {
     
     func padIn(_ frame: SKNode, _ percentX: CGFloat, _ percentY: CGFloat)
 }
+
+
+// It's dumb how this doesnt come out of box.
+//extension CGPoint: FloatingPoint { }

@@ -25,7 +25,6 @@ class CustomFloatingLabel: SKNode {
         
         // left of subject
         var horizontalOffset: CGFloat! = right ? _WIDTH : -_WIDTH
-//        horizontalOffset = subject == nil ? horizontalOffset : 
         horizontalOffset = horizontalOffset / 2
         var position = subject == nil ? nil : CGPoint(x: subject!.position.x + horizontalOffset, y: subject!.position.y)
         

@@ -15,8 +15,7 @@ class DeployJourneyAnimation: Animation {
     var dashedSplinePath: CustomDashedSpline!
 
     // Helper animation data derivced from above.
-    var destinationIconNodes: [DestinationIconType:SKShapeNode] = [:]
-    var floatingLabels: [DestinationIconType:CustomFloatingLabel] = [:]
+    var destinationLabeledIcons: [DestinationIconType:LabeledIcon] = [:]
     var pathPositions: [CGPoint] { return destinationOrder.map { destinationPositions[$0]! } }
     var pathPositionsCopy: [CGPoint] = []
     
@@ -37,8 +36,7 @@ class DeployJourneyAnimation: Animation {
         appendNode(dashedSplinePath)
         
         appendNode(bgImage)
-        buildDestinationIcons()
-        buildFloatingLabels()
+        buildLabeledIcons()
     }
     
     func destinationFractions() -> [Float] {
@@ -67,41 +65,24 @@ class DeployJourneyAnimation: Animation {
         return outputSegmentPercentLengths
     }
     
-    
-    private func buildDestinationIcons() {
-        destinationIconNodes.updateValue(createLogoIcon(iconType: .SSH), forKey: .SSH)
-        destinationIconNodes.updateValue(createLogoIcon(iconType: .VPS), forKey: .VPS)
-        destinationIconNodes.updateValue(createLogoIcon(iconType: .Unicorn), forKey: .Unicorn)
-        destinationIconNodes.updateValue(createLogoIcon(iconType: .Nginx), forKey: .Nginx)
-
-        for (_, iconNode) in destinationIconNodes {
-            appendNode(iconNode)
-        }
-    }
-    
-    private func buildFloatingLabels() {
+    // convenient to combine Icon and Floating Label building into one function with nodes.
+    private func buildLabeledIcons() {
         for (title, descriptionText, destinationType) in deployJourneyDescriptionData {
             let isRight = rightDestinationLabels.contains(destinationType)
-
-            floatingLabels.updateValue(CustomFloatingLabel(title: title,
-                                                           text: descriptionText,
-                                                           subject: destinationIconNodes[destinationType],
-                                                           right: isRight),
-                                       forKey: destinationType)
+            let fileName = destinationFileNames[destinationType] ?? "sample text"
+            var position = destinationPositions[destinationType] ?? CGPoint(0.0)
+            position = position + (self.scene?.getCenter() ?? CGPoint(0.0)) //floating point += support missing
             
+            let labeledIconNode = LabeledIcon(labelOnRight: isRight,
+                                              fileName: fileName,
+                                              center: position,
+                                              title: title,
+                                              description: descriptionText
+                                             )
+            destinationLabeledIcons.updateValue(labeledIconNode,
+                                                forKey: destinationType)
+            appendNode(labeledIconNode)
         }
-    }
-    
-        
-    private func createLogoIcon(iconType: DestinationIconType) -> SKShapeNode {
-        guard let imageNamed = destinationFileNames[iconType] else { fatalError("no file string for \(iconType)") }
-        guard let position = destinationPositions[iconType] else { fatalError("no position for \(iconType)") }
-        var icon = SKShapeNode(circleOfRadius: 40)
-        icon.fillTexture = SKTexture(imageNamed: imageNamed)
-        icon.fillColor = .white
-
-        icon.position = self.scene!.getCenter() + position
-        return icon
     }
     
     override func setupAnimationCode() {
@@ -117,7 +98,7 @@ class DeployJourneyAnimation: Animation {
                 animationScene.moveCam(to: destinationPositions[destination]! + animationScene.getCenter(), d: 1.0)
             }
             
-            if var floatingLabel = floatingLabels[destination] {
+            if let floatingLabel = destinationLabeledIcons[destination]?.label {
                 //title fade in
                 addAnimationFrame {
                     self.addChild(floatingLabel)
@@ -154,8 +135,7 @@ class DeployJourneyAnimation: Animation {
     override func cleanup() {
         dashedSplinePath.reset()
         // dont retain nodes, cant rerun the animation without bugs otherwise
-        destinationIconNodes = [:]
-        floatingLabels = [:]
+        destinationLabeledIcons = [:]
     }
 }
 
