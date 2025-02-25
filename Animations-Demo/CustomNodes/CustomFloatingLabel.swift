@@ -42,17 +42,21 @@ class CustomFloatingLabel: SKNode {
         arrowNode.strokeTexture?.filteringMode = .nearest
         self.titleNode.addChild(arrowNode)
         self.hideAll()
+        
+        arrowNode.strokeColor = .black
     }
         
     private func makeArrow(right: Bool) -> SKShapeNode {
         let trianglePath = CGMutablePath()
-        _arrowPoints = right ? [CGPoint(-30.0,0.0), CGPoint(2.0,-10.0),CGPoint(2.0,10.0)] : [CGPoint(30.0,0.0), CGPoint(-2.0,10.0),CGPoint(-2.0,-10.0)]
+        _arrowPoints = right ?
+          [CGPoint(4.0,-10.0),CGPoint(-30.0,0.0),CGPoint(4.0,10.0)] :
+          [CGPoint(-4.0,10.0),CGPoint(30.0,0.0),CGPoint(-4.0,-10.0)]
 
         return SKShapeNode(points: &_arrowPoints, count: 3)
     }
     
     func buildFloatingTitle(position: CGPoint?) {
-        self.titleNode = SKLabelNode(fontNamed: "Chalkduster")
+        self.titleNode = SKLabelNode(fontNamed: "Big Caslon")
         
         self.titleNode.position = position ?? CGPoint(x:0,y:0)
         
@@ -64,6 +68,7 @@ class CustomFloatingLabel: SKNode {
         // SKShapeNode(rectOf: textParentNode) instead of rect: uses the size at center to make shape
         self.titleBackground = SKShapeNode(rectOf: titleSize, cornerRadius: _PADDING)
         titleBackground.fillColor = .white
+        titleBackground.strokeColor = .black
         titleNode.fontColor = .black
         titleNode.verticalAlignmentMode = .center
         
@@ -74,7 +79,7 @@ class CustomFloatingLabel: SKNode {
     
     func buildFloatingDescription(position: CGPoint?) {
         
-        self.descriptionNode = SKLabelNode(fontNamed: "Roboto")
+        self.descriptionNode = SKLabelNode(fontNamed: "Big Caslon")
         
         self.descriptionNode.position = position ?? CGPoint(x:0,y:0)
 
@@ -92,6 +97,7 @@ class CustomFloatingLabel: SKNode {
         let backgroundSize = CGSize(width: _WIDTH + _PADDING, height: backgroundRectangle.height)
         self.descriptionBackground = SKShapeNode(rectOf: backgroundSize, cornerRadius: 10)
         descriptionBackground.fillColor = .white
+        descriptionBackground.strokeColor = .black
         descriptionNode.fontColor = .black
         
         descriptionNode.position.y -= descriptionNode.frame.height / 2 + _PADDING

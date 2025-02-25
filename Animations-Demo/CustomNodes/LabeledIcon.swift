@@ -16,6 +16,7 @@ class LabeledIcon: SKNode {
         icon.fillColor = .white
         icon.position = center
         icon.lineWidth = 6
+        icon.zPosition = -2
         
         label = CustomFloatingLabel(title: title,
                                     text: description,
@@ -23,8 +24,8 @@ class LabeledIcon: SKNode {
                                     right: labelOnRight)
         super.init()
         
-        label.zPosition = self.zPosition
-
+        label.zPosition += 1.0
+        
         self.addChild(icon)
     }
     

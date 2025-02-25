@@ -30,12 +30,35 @@ let destinationPositions: [DestinationIconType:CGPoint] =
 
 // Floating label data
 let deployJourneyDescriptionData: [(String, String, DestinationIconType)] = [
-    ("VPS", "Virtual private servers are the land you own on the internet, well more like rent", .VPS),
-    ("SSH", "SSH is the protocol used to connect to servers. You need to make SSH keys and keep them safe. This step also involves adding a deploy key to server from your project repository so that you can use git to pull the latest version to your server.", .SSH),
-    ("Ruby", "You have to download your dependencies on the server", .Ruby),
-    ("Unicorn", "Unicorn is a ruby web server which processes HTTP requests and works with your rails app to make sure you and your visitors can navigate and use your rails application.", .Unicorn),
-    ("Nginx", "Nginx is a common server proxy which routes traffic to your IP to the unicorn servers", .Nginx)
-    
+    ("VPS", 
+     "• Virtual private servers \n" +
+     "• Internet land for rent \n " +
+     "• Digital ocean, Hetzner, Vultr"
+     , .VPS),
+    ("SSH",
+     "• SSH is the protocol used to connect to servers \n" +
+     "• Make SSH keys and keep them safe \n" +
+     "• Add a deploy key from github to your server",
+     .SSH),
+    ("Ruby",
+     "• Download dependencies on your server \n" +
+     "• ruby version manager \n" +
+     "• postgres \n" +
+     "• firewall (ufw) \n",
+     .Ruby),
+    ("Unicorn",
+     "• Unicorn is a ruby web server \n" +
+     "• processes HTTP requests \n" +
+     "• routes traffic to your Rails application",
+     .Unicorn),
+    ("Nginx",
+     "• Nginx is a widely used server proxy which routes traffic to the unicorn servers",
+     .Nginx),
+    ("HTTPS",
+     "• Certbot makes generating HTTPS certificates easier than ever \n" +
+     "• Set up automatic renewal",
+     .HTTPS
+    )
 ]
 
 let rightDestinationLabels: [DestinationIconType] = [.Ruby, .Nginx]
