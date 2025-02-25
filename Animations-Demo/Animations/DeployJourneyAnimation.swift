@@ -8,6 +8,7 @@ enum DestinationIconType {
     case Unicorn
     case Nginx
     case HTTPS
+    case Ruby
 }
 
 class DeployJourneyAnimation: Animation {

@@ -14,6 +14,7 @@ class CustomFloatingLabel: SKNode {
     
     var descriptionNode: SKLabelNode!
     var descriptionBackground: SKShapeNode!
+    private var _arrowPoints: [CGPoint] = []
     
     init(title: String, text: String, subject: SKNode? = nil, right: Bool = true, width: CGFloat = 200, padding: CGFloat = 10) {
         self.subject = subject
@@ -24,15 +25,30 @@ class CustomFloatingLabel: SKNode {
         super.init()
         
         // left of subject
-        var horizontalOffset: CGFloat! = right ? _WIDTH : -_WIDTH
-        horizontalOffset = horizontalOffset / 2
-        var position = subject == nil ? nil : CGPoint(x: subject!.position.x + horizontalOffset, y: subject!.position.y)
+        let horizontalOffset: CGFloat! = right ? _WIDTH : -_WIDTH
+//        horizontalOffset = horizontalOffset
+        let position = subject == nil ? nil : CGPoint(x: subject!.position.x + horizontalOffset, y: subject!.position.y)
         
         buildFloatingTitle(position: position)
         
         var descriptionPosition = self.titleNode.position
+        descriptionPosition.y -= self.titleNode.frame.size.height
         buildFloatingDescription(position: descriptionPosition)
+        
+        let arrowNode = makeArrow(right: right)
+        arrowNode.position.x += right ? -titleBackground.frame.width / 2 : titleBackground.frame.width / 2
+        arrowNode.fillColor = .white
+        arrowNode.lineWidth = 1
+        arrowNode.strokeTexture?.filteringMode = .nearest
+        self.titleNode.addChild(arrowNode)
         self.hideAll()
+    }
+        
+    private func makeArrow(right: Bool) -> SKShapeNode {
+        let trianglePath = CGMutablePath()
+        _arrowPoints = right ? [CGPoint(-30.0,0.0), CGPoint(2.0,-10.0),CGPoint(2.0,10.0)] : [CGPoint(30.0,0.0), CGPoint(-2.0,10.0),CGPoint(-2.0,-10.0)]
+
+        return SKShapeNode(points: &_arrowPoints, count: 3)
     }
     
     func buildFloatingTitle(position: CGPoint?) {
@@ -41,12 +57,12 @@ class CustomFloatingLabel: SKNode {
         self.titleNode.position = position ?? CGPoint(x:0,y:0)
         
         self.titleNode.text = self.title
-        var titleRect = titleNode.frame.insetBy(dx: -10, dy: -10)
+        let titleRect = titleNode.frame.insetBy(dx: -_PADDING, dy: -_PADDING)
         // override size with _WIDTH constant
-        var titleSize = CGSize(width: _WIDTH, height: titleRect.height + 10)
+        let titleSize = CGSize(width: _WIDTH + _PADDING, height: titleRect.height)
         
         // SKShapeNode(rectOf: textParentNode) instead of rect: uses the size at center to make shape
-        self.titleBackground = SKShapeNode(rectOf: titleSize, cornerRadius: 10)
+        self.titleBackground = SKShapeNode(rectOf: titleSize, cornerRadius: _PADDING)
         titleBackground.fillColor = .white
         titleNode.fontColor = .black
         titleNode.verticalAlignmentMode = .center
@@ -58,7 +74,7 @@ class CustomFloatingLabel: SKNode {
     
     func buildFloatingDescription(position: CGPoint?) {
         
-        self.descriptionNode = SKLabelNode(fontNamed: "Chalkduster")
+        self.descriptionNode = SKLabelNode(fontNamed: "Roboto")
         
         self.descriptionNode.position = position ?? CGPoint(x:0,y:0)
 
@@ -72,12 +88,13 @@ class CustomFloatingLabel: SKNode {
         self.descriptionNode.text = self.descriptionText
         self.descriptionNode.fontSize = 12
         
-        var backgroundRectangle = descriptionNode.frame.insetBy(dx: -10, dy: -10)
-        self.descriptionBackground = SKShapeNode(rectOf: backgroundRectangle.size, cornerRadius: 10)
+        let backgroundRectangle = descriptionNode.frame.insetBy(dx: -_PADDING, dy: -_PADDING)
+        let backgroundSize = CGSize(width: _WIDTH + _PADDING, height: backgroundRectangle.height)
+        self.descriptionBackground = SKShapeNode(rectOf: backgroundSize, cornerRadius: 10)
         descriptionBackground.fillColor = .white
         descriptionNode.fontColor = .black
         
-        descriptionNode.position.y -= 50
+        descriptionNode.position.y -= descriptionNode.frame.height / 2 + _PADDING
         self.addChild(descriptionNode)
         descriptionBackground.zPosition = -1
         descriptionNode.addChild(descriptionBackground)

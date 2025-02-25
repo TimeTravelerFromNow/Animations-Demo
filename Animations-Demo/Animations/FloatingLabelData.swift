@@ -1,18 +1,21 @@
 import SpriteKit
 
 // Icons
-let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Unicorn, .Nginx]
+let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Ruby, .Unicorn, .Nginx]
 
 let destinationFileNames: [DestinationIconType:String] =
-[.VPS:"digital-ocean-logo.png",
+[
+ .VPS:"digital-ocean-logo.png",
  .SSH:"ssh-console.png",
  .Unicorn:"unicorn-logo.png",
- .Nginx:"nginx_logo_dark.png"
+ .Nginx:"nginx_logo_dark.png",
+ .Ruby: "ruby-logo.png"
 ]
 
 let destinationPositions: [DestinationIconType:CGPoint] =
 [.VPS:CGPoint(x:-285,y:112),
- .SSH:CGPoint(x:-41,y:146),
+ .SSH:CGPoint(x:-136, y:136),
+ .Ruby:CGPoint(x:44, y:130),
  .Unicorn:CGPoint(x: 15, y: -22),
  .Nginx:CGPoint(x: 197, y: -146)
 // -285.3383483886719 112.75836181640625
@@ -28,10 +31,11 @@ let destinationPositions: [DestinationIconType:CGPoint] =
 // Floating label data
 let deployJourneyDescriptionData: [(String, String, DestinationIconType)] = [
     ("VPS", "Virtual private servers are the land you own on the internet, well more like rent", .VPS),
-    ("SSH", "SSH is the protocol used to connect to servers. You need to make SSH keys and keep them safe", .SSH),
+    ("SSH", "SSH is the protocol used to connect to servers. You need to make SSH keys and keep them safe. This step also involves adding a deploy key to server from your project repository so that you can use git to pull the latest version to your server.", .SSH),
+    ("Ruby", "You have to download your dependencies on the server", .Ruby),
     ("Unicorn", "Unicorn is a ruby web server which processes HTTP requests and works with your rails app to make sure you and your visitors can navigate and use your rails application.", .Unicorn),
     ("Nginx", "Nginx is a common server proxy which routes traffic to your IP to the unicorn servers", .Nginx)
     
 ]
 
-let rightDestinationLabels: [DestinationIconType] = [.SSH, .Nginx]
+let rightDestinationLabels: [DestinationIconType] = [.Ruby, .Nginx]
