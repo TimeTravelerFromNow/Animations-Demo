@@ -11,7 +11,7 @@ class LabeledIcon: SKNode {
          title: String,
          description: String
         ) {
-        icon = SKShapeNode(circleOfRadius: 40)
+        icon = SKShapeNode(circleOfRadius: 30)
         icon.fillTexture = SKTexture(imageNamed: fileName)
         icon.fillColor = .white
         icon.position = center

@@ -1,21 +1,10 @@
 import SpriteKit
-
-enum DestinationIconType {
-    case VPS
-    case Mina
-    case SSH
-    case Postgres
-    case Unicorn
-    case Nginx
-    case HTTPS
-    case Ruby
-}
+// animation data in FloatingLabelData.
 
 class DeployJourneyAnimation: Animation {
     var bgImage: SKNode!
     var dashedSplinePath: CustomDashedSpline!
 
-    // Helper animation data derivced from above.
     var destinationLabeledIcons: [DestinationIconType:LabeledIcon] = [:]
     var pathPositions: [CGPoint] { return destinationOrder.map { destinationPositions[$0]! } }
     var pathPositionsCopy: [CGPoint] = []
@@ -88,10 +77,6 @@ class DeployJourneyAnimation: Animation {
     }
     
     override func setupAnimationCode() {
-        addAnimationFrame {
-            (self.scene as! AnimationScene).zoomCam(s: 2, d: 0.4)
-        }
-        
         // first animate camera going to each destination, and fade in floating labels describing destination.
         for (i, destination) in destinationOrder.enumerated() {
             // camera goes to each destination
@@ -105,6 +90,9 @@ class DeployJourneyAnimation: Animation {
                 addAnimationFrame {
                     self.addChild(floatingLabel)
                     floatingLabel.animateFadeIn()
+                    if ( i == 0 ) {
+                        (self.scene as! AnimationScene).zoomCam(s: 1.0, d: 1.6)
+                    }
                 }
                 // description fade in
                 addAnimationFrame {

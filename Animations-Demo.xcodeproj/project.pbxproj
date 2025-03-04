@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		695EA40C2D5C0F7800D4FAAE /* middle-earth-3rd-age.png in Resources */ = {isa = PBXBuildFile; fileRef = 695EA40B2D5C0F7800D4FAAE /* middle-earth-3rd-age.png */; };
 		695EA4102D5C425F00D4FAAE /* digital-ocean-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 695EA40F2D5C425F00D4FAAE /* digital-ocean-logo.png */; };
-		695EA41A2D5D0DCD00D4FAAE /* ssh-console.png in Resources */ = {isa = PBXBuildFile; fileRef = 695EA4192D5D0DCD00D4FAAE /* ssh-console.png */; };
 		695EA41C2D5D35DE00D4FAAE /* unicorn-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 695EA41B2D5D35DE00D4FAAE /* unicorn-logo.png */; };
 		697530E32D6C284A005C58C7 /* LabeledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697530E22D6C283B005C58C7 /* LabeledIcon.swift */; };
 		697BF68F2D5A733500584D4F /* middle-earth-3rd-age_base.png in Resources */ = {isa = PBXBuildFile; fileRef = 697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */; };
@@ -18,6 +17,8 @@
 		698895A52D6C3D8200F27A13 /* middle-earth-map-re-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 698895A42D6C3D8200F27A13 /* middle-earth-map-re-color.png */; };
 		698895A72D6C405800F27A13 /* middle-earth-original-journey.png in Resources */ = {isa = PBXBuildFile; fileRef = 698895A62D6C405800F27A13 /* middle-earth-original-journey.png */; };
 		69B6677C2D6D3ECF006C555D /* ruby-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 69B6677B2D6D3ECF006C555D /* ruby-logo.png */; };
+		69B6677E2D6D6C34006C555D /* certbot-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 69B6677D2D6D6C34006C555D /* certbot-logo.png */; };
+		69B667822D6E3431006C555D /* ssh-console.png in Resources */ = {isa = PBXBuildFile; fileRef = 69B667812D6E3431006C555D /* ssh-console.png */; };
 		69E61E0A2D68399900782774 /* FloatingLabelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E61E092D68398D00782774 /* FloatingLabelData.swift */; };
 		69F5286D2D5FF70B0055EC86 /* CustomDashedSpline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5286C2D5FF7080055EC86 /* CustomDashedSpline.swift */; };
 		69F5286F2D613ED00055EC86 /* CustomFloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F5286E2D613EB70055EC86 /* CustomFloatingLabel.swift */; };
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		695EA40B2D5C0F7800D4FAAE /* middle-earth-3rd-age.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-earth-3rd-age.png"; sourceTree = "<group>"; };
 		695EA40F2D5C425F00D4FAAE /* digital-ocean-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "digital-ocean-logo.png"; sourceTree = "<group>"; };
-		695EA4192D5D0DCD00D4FAAE /* ssh-console.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ssh-console.png"; sourceTree = "<group>"; };
 		695EA41B2D5D35DE00D4FAAE /* unicorn-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unicorn-logo.png"; sourceTree = "<group>"; };
 		697530E22D6C283B005C58C7 /* LabeledIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledIcon.swift; sourceTree = "<group>"; };
 		697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-earth-3rd-age_base.png"; sourceTree = "<group>"; };
@@ -45,6 +45,8 @@
 		698895A42D6C3D8200F27A13 /* middle-earth-map-re-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-earth-map-re-color.png"; sourceTree = "<group>"; };
 		698895A62D6C405800F27A13 /* middle-earth-original-journey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middle-earth-original-journey.png"; sourceTree = "<group>"; };
 		69B6677B2D6D3ECF006C555D /* ruby-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ruby-logo.png"; sourceTree = "<group>"; };
+		69B6677D2D6D6C34006C555D /* certbot-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "certbot-logo.png"; sourceTree = "<group>"; };
+		69B667812D6E3431006C555D /* ssh-console.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ssh-console.png"; sourceTree = "<group>"; };
 		69E61E092D68398D00782774 /* FloatingLabelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelData.swift; sourceTree = "<group>"; };
 		69F5286C2D5FF7080055EC86 /* CustomDashedSpline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashedSpline.swift; sourceTree = "<group>"; };
 		69F5286E2D613EB70055EC86 /* CustomFloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingLabel.swift; sourceTree = "<group>"; };
@@ -85,14 +87,15 @@
 		9229DE3A2B730AAE00BB60D6 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				69B6677D2D6D6C34006C555D /* certbot-logo.png */,
 				69B6677B2D6D3ECF006C555D /* ruby-logo.png */,
 				698895A42D6C3D8200F27A13 /* middle-earth-map-re-color.png */,
+				69B667812D6E3431006C555D /* ssh-console.png */,
 				69F94F042D5EA46D00AA9E21 /* nginx_logo_dark.png */,
 				695EA41B2D5D35DE00D4FAAE /* unicorn-logo.png */,
 				695EA40F2D5C425F00D4FAAE /* digital-ocean-logo.png */,
 				695EA40B2D5C0F7800D4FAAE /* middle-earth-3rd-age.png */,
 				697BF68E2D5A733500584D4F /* middle-earth-3rd-age_base.png */,
-				695EA4192D5D0DCD00D4FAAE /* ssh-console.png */,
 				698895A62D6C405800F27A13 /* middle-earth-original-journey.png */,
 			);
 			path = res;
@@ -211,9 +214,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				695EA41A2D5D0DCD00D4FAAE /* ssh-console.png in Resources */,
 				698895A72D6C405800F27A13 /* middle-earth-original-journey.png in Resources */,
 				69F94F052D5EA46D00AA9E21 /* nginx_logo_dark.png in Resources */,
+				69B667822D6E3431006C555D /* ssh-console.png in Resources */,
 				92C984E12B2BC54000EE45EC /* AnimationScene.sks in Resources */,
 				92C984E92B2BC54300EE45EC /* Assets.xcassets in Resources */,
 				697BF68F2D5A733500584D4F /* middle-earth-3rd-age_base.png in Resources */,
@@ -223,6 +226,7 @@
 				92C984E32B2BC54000EE45EC /* Actions.sks in Resources */,
 				695EA40C2D5C0F7800D4FAAE /* middle-earth-3rd-age.png in Resources */,
 				92C984EC2B2BC54300EE45EC /* Main.storyboard in Resources */,
+				69B6677E2D6D6C34006C555D /* certbot-logo.png in Resources */,
 				695EA41C2D5D35DE00D4FAAE /* unicorn-logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

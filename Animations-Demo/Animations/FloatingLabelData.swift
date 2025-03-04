@@ -1,7 +1,18 @@
 import SpriteKit
 
+enum DestinationIconType {
+    case VPS
+    case Mina
+    case SSH
+    case Postgres
+    case Unicorn
+    case Nginx
+    case HTTPS
+    case Ruby
+}
+
 // Icons
-let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Ruby, .Unicorn, .Nginx]
+let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Ruby, .Unicorn, .Nginx, .HTTPS]
 
 let destinationFileNames: [DestinationIconType:String] =
 [
@@ -9,7 +20,8 @@ let destinationFileNames: [DestinationIconType:String] =
  .SSH:"ssh-console.png",
  .Unicorn:"unicorn-logo.png",
  .Nginx:"nginx_logo_dark.png",
- .Ruby: "ruby-logo.png"
+ .Ruby: "ruby-logo.png",
+ .HTTPS: "certbot-logo.png"
 ]
 
 let destinationPositions: [DestinationIconType:CGPoint] =
@@ -17,7 +29,8 @@ let destinationPositions: [DestinationIconType:CGPoint] =
  .SSH:CGPoint(x:-136, y:136),
  .Ruby:CGPoint(x:44, y:130),
  .Unicorn:CGPoint(x: 15, y: -22),
- .Nginx:CGPoint(x: 197, y: -146)
+ .Nginx:CGPoint(x: 197, y: -146),
+ .HTTPS:CGPoint(x:305, y:-380)
 // -285.3383483886719 112.75836181640625
 // -41.01458740234375 146.278564453125
 // 15.02838134765625 -22.486572265625
