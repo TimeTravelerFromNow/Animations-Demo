@@ -77,6 +77,12 @@ class DeployJourneyAnimation: Animation {
     }
     
     override func setupAnimationCode() {
+        // undo greenscreen
+        addAnimationFrame {
+            self.bgImage.alpha = 1.0
+            self.scene?.backgroundColor = NSColor(red: 39 / 255, green: 41 / 255, blue: 69 / 255, alpha: 1)
+        }
+        
         // first animate camera going to each destination, and fade in floating labels describing destination.
         for (i, destination) in destinationOrder.enumerated() {
             // camera goes to each destination
@@ -103,6 +109,16 @@ class DeployJourneyAnimation: Animation {
                     floatingLabel.animateFadeOut()
                 }
             }
+        }
+        
+        addAnimationFrame {
+            guard let animationScene = (self.scene as? AnimationScene) else { return }
+            animationScene.moveCam(to: destinationPositions[destinationOrder.first!]! + animationScene.getCenter(), d: 1.0)
+        }
+        // greenscreen!
+        addAnimationFrame {
+            self.bgImage.alpha = 0.0
+            self.scene?.backgroundColor = .green
         }
         
         // Then after we can animate the red dotted path journey
