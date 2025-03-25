@@ -4,23 +4,26 @@ enum DestinationIconType {
     case VPS
     case Mina
     case SSH
+    case Ruby
     case Postgres
+    case DeployTool
     case Unicorn
     case Nginx
     case HTTPS
-    case Ruby
 }
 
 // Icons
-let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Ruby, .Unicorn, .Nginx, .HTTPS]
+let destinationOrder: [DestinationIconType] = [.VPS, .SSH, .Ruby, .Postgres, .DeployTool, .Unicorn, .Nginx, .HTTPS]
 
 let destinationFileNames: [DestinationIconType:String] =
 [
  .VPS:"digital-ocean-logo.png",
  .SSH:"ssh-console.png",
+ .Ruby: "ruby-logo.png",
+ .Postgres: "postgres-logo.png",
+ .DeployTool: "mina-deploy.png",
  .Unicorn:"unicorn-logo.png",
  .Nginx:"nginx_logo_dark.png",
- .Ruby: "ruby-logo.png",
  .HTTPS: "certbot-logo.png"
 ]
 
@@ -28,17 +31,11 @@ let destinationPositions: [DestinationIconType:CGPoint] =
 [.VPS:CGPoint(x:-285,y:112),
  .SSH:CGPoint(x:-136, y:136),
  .Ruby:CGPoint(x:44, y:130),
- .Unicorn:CGPoint(x: 15, y: -22),
- .Nginx:CGPoint(x: 197, y: -146),
- .HTTPS:CGPoint(x:305, y:-380)
-// -285.3383483886719 112.75836181640625
-// -41.01458740234375 146.278564453125
-// 15.02838134765625 -22.486572265625
-// 197.6529541015625 -145.98910522460938
-// 192.98876953125 -274.9796447753906
-// 292.0914306640625 -268.319580078125
-// 304.8082275390625 -378.8586730957031
-// 372.109619140625 -331.6553955078125
+ .Postgres:CGPoint(x:15,y:-20),
+ .DeployTool:CGPoint(x:107,y:-83),
+ .Unicorn:CGPoint(x: 197, y: -146),
+ .Nginx:CGPoint(x:305, y:-380),
+ .HTTPS:CGPoint(x:372,y:-331),
 ]
 
 // Floating label data
@@ -51,7 +48,7 @@ let deployJourneyDescriptionData: [(String, String, DestinationIconType)] = [
     ("SSH",
      "• SSH is the protocol used to connect to servers \n" +
      "• Make SSH keys and keep them safe \n" +
-     "• Add a deploy key from github to your server",
+     "• Add a deploy key from your server to your github repository for read access",
      .SSH),
     ("Ruby",
      "• Download dependencies on your server \n" +
@@ -59,10 +56,20 @@ let deployJourneyDescriptionData: [(String, String, DestinationIconType)] = [
      "• postgres \n" +
      "• firewall (ufw) \n",
      .Ruby),
-    ("Unicorn",
+    ("Database",
+     "• Postgresql \n" +
+     "• Create a postgres user \n" +
+     "• Configure your rails app to use postgres \n",
+     .Postgres),
+    ("Deploy Tool",
+     "• Automate! please use a deploy tool \n" +
+     "• Mina deploy ruby gem \n" +
+     "• This tutorial wont use docker",
+     .DeployTool),
+    ("Web server",
      "• Unicorn is a ruby web server \n" +
      "• processes HTTP requests \n" +
-     "• routes traffic to your Rails application",
+     "• Routes traffic in and out of the Rails application",
      .Unicorn),
     ("Nginx",
      "• Nginx is a widely used server proxy which routes traffic to the unicorn servers",

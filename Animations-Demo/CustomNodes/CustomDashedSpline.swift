@@ -23,10 +23,11 @@ class CustomDashedSpline:SKShapeNode {
     }
     }
     """)
-    var dottedLine: CGPath!
+ 
     init(sourcePath: CGPath) {
         super.init()
         self.path = sourcePath.copy(dashingWithPhase: 1, lengths: [10])
+        setPathDrawProperties()
     }
     
     required init?(coder aDecoder: NSCoder) {
