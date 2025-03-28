@@ -48,13 +48,12 @@ let deployJourneyDescriptionData: [(String, String, DestinationIconType)] = [
     ("SSH",
      "• SSH is the protocol used to connect to servers \n" +
      "• Make SSH keys and keep them safe \n" +
-     "• Add a deploy key from your server to your github repository for read access",
+     "• Add a deploy key from your server to your github repository for read access \n" +
+     "• firewall (ufw) \n",
      .SSH),
     ("Ruby",
      "• Download dependencies on your server \n" +
-     "• ruby version manager \n" +
-     "• postgres \n" +
-     "• firewall (ufw) \n",
+     "• ruby version manager \n",
      .Ruby),
     ("Database",
      "• Postgresql \n" +
@@ -62,14 +61,14 @@ let deployJourneyDescriptionData: [(String, String, DestinationIconType)] = [
      "• Configure your rails app to use postgres \n",
      .Postgres),
     ("Deploy Tool",
-     "• Automate! please use a deploy tool \n" +
-     "• Mina deploy ruby gem \n" +
-     "• This tutorial wont use docker",
+     "• Automate new versions \n" +
+     "• Mina deploy ruby gem \n",
      .DeployTool),
     ("Web server",
      "• Unicorn is a ruby web server \n" +
      "• processes HTTP requests \n" +
-     "• Routes traffic in and out of the Rails application",
+     "• Routes traffic in and out of the Rails application \n" +
+     "• If using Rack 3 with new rails, unicorn may not work",
      .Unicorn),
     ("Nginx",
      "• Nginx is a widely used server proxy which routes traffic to the unicorn servers",

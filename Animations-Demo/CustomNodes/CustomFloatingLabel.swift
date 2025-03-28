@@ -15,6 +15,7 @@ class CustomFloatingLabel: SKNode {
     var descriptionNode: SKLabelNode!
     var descriptionBackground: SKShapeNode!
     private var _arrowPoints: [CGPoint] = []
+    private var _titleDidFadeIn: Bool = false
     
     init(title: String, text: String, subject: SKNode? = nil, right: Bool = true, width: CGFloat = 200, padding: CGFloat = 10) {
         self.subject = subject
@@ -117,6 +118,7 @@ class CustomFloatingLabel: SKNode {
     private var _removeFromParent: SKAction { return SKAction.customAction(withDuration: 0) {
         (node : SKNode!, elapsedTime : CGFloat) -> Void in
             self.removeFromParent()
+            self._titleDidFadeIn = false
         }
     }
     private var _fadeOutAndRemove: SKAction { return SKAction.sequence([_fadeOutAll, _removeFromParent]) }
@@ -129,10 +131,11 @@ class CustomFloatingLabel: SKNode {
     
     func animateFadeIn() {
         // First run title fade in, then description
-        if self.titleNode.alpha == 0.0 {
+        if !_titleDidFadeIn {
             self.titleNode.run(_fIA)
             self.titleBackground.run(_fIA)
-        } else if self.descriptionNode.alpha == 0.0 {
+            _titleDidFadeIn = true
+        } else {
             self.descriptionNode.run(_fIA)
             self.descriptionBackground.run(_fIA)
         }
